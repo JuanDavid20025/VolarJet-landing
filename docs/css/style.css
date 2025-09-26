@@ -44,7 +44,7 @@ body {
 }
 
 .logo {
-    height: 136px;
+    height: 36px;
     width: auto
 }
 
@@ -119,6 +119,7 @@ body {
     border-radius: 6px;
     border: 1px solid #dfeff0
 }
+
 :root {
     --teal: #007a87;
     --gold: #d9b24a;
@@ -388,6 +389,7 @@ body {
         grid-template-columns: 1fr
     }
 }
+
 /* -------- LOGO: tamaño consistente -------- */
 .logo {
     height: 80px;
@@ -437,6 +439,7 @@ body {
     max-width: 100%;
     height: auto;
 }
+
 /* -------- LOGO: tamaño consistente -------- */
 .logo {
     height: 110px;
@@ -486,6 +489,7 @@ body {
     max-width: 100%;
     height: auto;
 }
+
 /* ====== Banner / Oferta ====== */
 .offer-hero {
     background-image: url('../assets/oferta.jpg');
@@ -696,6 +700,7 @@ body {
     border-radius: 6px;
     border: 1px solid #dfeff0
 }
+
 :root {
     --teal: #007a87;
     --gold: #d9b24a;
@@ -965,6 +970,7 @@ body {
         grid-template-columns: 1fr
     }
 }
+
 /* -------- LOGO: tamaño consistente -------- */
 .logo {
     height: 80px;
@@ -1014,6 +1020,7 @@ body {
     max-width: 100%;
     height: auto;
 }
+
 /* -------- LOGO: tamaño consistente -------- */
 .logo {
     height: 72px;
@@ -1063,6 +1070,7 @@ body {
     max-width: 100%;
     height: auto;
 }
+
 /* ====== Banner / Oferta ====== */
 .offer-hero {
     background-image: url('../assets/oferta.jpg');
@@ -1151,6 +1159,10 @@ body {
         padding: 28px 0;
     }
 }
-
+.brand img.logo {
+    height: 173px;
+    /* <-- aquí */
+    width: auto;
+}
 
 
