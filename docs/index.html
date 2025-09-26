@@ -1,200 +1,200 @@
 <!doctype html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Volarjet — Reserva tus vuelos</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <meta name="description" content="Volarjet — Reserva vuelos, check-in, pagos y más. Página oficial de la aerolínea." />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Volarjet — Reserva tus vuelos</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="description"
+        content="Volarjet — Reserva vuelos, check-in, pagos y más. Página oficial de la aerolínea." />
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-grid">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="Volarjet" class="logo">
-        <span class="brand-text">Volarjet</span>
-      </a>
+    <header class="site-header">
+        <div class="container header-grid">
+            <a class="brand" href="index.html">
+                <img src="assets/logo.png" alt="Volarjet" class="logo">
+                <span class="brand-text"></span>
+            </a>
 
-      <nav class="nav" aria-label="Menú principal">
-        <a href="index.html">Inicio</a>
-        <a href="destinos.html">Destinos</a>
-        <a href="ofertas.html">Ofertas</a>
-        <a href="reservas.html">Reservas</a>
-        <a href="checkin.html">Check-in</a>
-        <a href="pagos.html">Pagos</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contacto.html">Contacto</a>
-        <a class="btn-outline" href="registro.html">Registro</a>
-        <a class="btn" href="login.html">Iniciar sesión</a>
-      </nav>
+            <nav class="nav" aria-label="Menú principal">
+                <a href="index.html">Inicio</a>
+                <a href="destinos.html">Destinos</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="checkin.html">Check-in</a>
+                <a href="pagos.html">Pagos</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contacto.html">Contacto</a>
+                <a class="btn-outline" href="registro.html">Registro</a>
+                <a class="btn" href="login.html">Iniciar sesión</a>
+            </nav>
 
-      <button id="menuToggle" class="hamburger" aria-label="Abrir menú">☰</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-left">
-          <h1>Vuela con Volarjet — <span>rápido, seguro y al mejor precio</span></h1>
-          <p>Encuentra ofertas, reserva tu asiento y realiza el check-in en línea. Atención 24/7 y soporte en español.</p>
-
-          <form id="searchForm" class="search-form">
-            <div class="row">
-              <input type="text" id="origen" placeholder="Origen (ej. Bogotá)" required>
-              <input type="text" id="destino" placeholder="Destino (ej. Medellín)" required>
-            </div>
-            <div class="row">
-              <input type="date" id="salida" required>
-              <input type="date" id="retorno">
-            </div>
-            <div class="row">
-              <select id="pasajeros">
-                <option value="1">1 pasajero</option>
-                <option value="2">2 pasajeros</option>
-                <option value="3">3 pasajeros</option>
-                <option value="4">4 pasajeros</option>
-              </select>
-              <button class="btn" type="submit">Buscar vuelos</button>
-            </div>
-          </form>
-
-          <div class="quick-links">
-            <a href="reservas.html" class="chip">Reservas</a>
-            <a href="checkin.html" class="chip">Check-in</a>
-            <a href="pagos.html" class="chip">Pagos</a>
-            <a href="ofertas.html" class="chip">Ofertas</a>
-          </div>
+            <button id="menuToggle" class="hamburger" aria-label="Abrir menú">☰</button>
         </div>
+    </header>
 
-        <div class="hero-right">
-          <div class="card promo">
-            <h3>Oferta del mes</h3>
-            <p>Vuelos ida y vuelta a Cartagena desde $XXX — promociones limitadas.</p>
-            <a class="btn" href="ofertas.html">Ver oferta</a>
-          </div>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-left">
+                    <h1>Vuela con Volarjet — <span>rápido, seguro y al mejor precio</span></h1>
+                    <p>Encuentra ofertas, reserva tu asiento y realiza el check-in en línea. Atención 24/7 y soporte en
+                        español.</p>
 
-          <div class="card stats">
-            <div><strong>24/7</strong><small>Soporte</small></div>
-            <div><strong>+100</strong><small>Rutas</small></div>
-            <div><strong>95%</strong><small>Satisfacción</small></div>
-          </div>
+                    <form id="searchForm" class="search-form">
+                        <div class="row">
+                            <input type="text" id="origen" placeholder="Origen (ej. Bogotá)" required>
+                            <input type="text" id="destino" placeholder="Destino (ej. Medellín)" required>
+                        </div>
+                        <div class="row">
+                            <input type="date" id="salida" required>
+                            <input type="date" id="retorno">
+                        </div>
+                        <div class="row">
+                            <select id="pasajeros">
+                                <option value="1">1 pasajero</option>
+                                <option value="2">2 pasajeros</option>
+                                <option value="3">3 pasajeros</option>
+                                <option value="4">4 pasajeros</option>
+                            </select>
+                            <button class="btn" type="submit">Buscar vuelos</button>
+                        </div>
+                    </form>
+
+                    <div class="quick-links">
+                        <a href="reservas.html" class="chip">Reservas</a>
+                        <a href="checkin.html" class="chip">Check-in</a>
+                        <a href="pagos.html" class="chip">Pagos</a>
+                        <a href="ofertas.html" class="chip">Ofertas</a>
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <div class="card promo">
+                        <h3>Oferta del mes</h3>
+                        <p>Vuelos ida y vuelta a Cartagena desde $XXX — promociones limitadas.</p>
+                        <a class="btn" href="ofertas.html">Ver oferta</a>
+                    </div>
+
+                    <div class="card stats">
+                        <div><strong>24/7</strong><small>Soporte</small></div>
+                        <div><strong>+100</strong><small>Rutas</small></div>
+                        <div><strong>95%</strong><small>Satisfacción</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features container">
+            <article>
+                <h2>Reservas fáciles</h2>
+                <p>Busca, compara y reserva en minutos. Soporte en cada paso.</p>
+                <a href="reservas.html">Ir a Reservas →</a>
+            </article>
+
+            <article>
+                <h2>Pagos seguros</h2>
+                <p>Aceptamos tarjetas, PSE y otros métodos locales.</p>
+                <a href="pagos.html">Ir a Pagos →</a>
+            </article>
+
+            <article>
+                <h2>Check-in online</h2>
+                <p>Realiza tu check-in desde cualquier dispositivo y evita filas.</p>
+                <a href="checkin.html">Hacer Check-in →</a>
+            </article>
+
+            <article>
+                <h2>Contacto y soporte</h2>
+                <p>Centro de ayuda, preguntas frecuentes y contacto directo.</p>
+                <a href="contacto.html">Contactar →</a>
+            </article>
+        </section>
+
+        <section class="cards container">
+            <div class="card large">
+                <h3>Gestión de reservas</h3>
+                <p>Administra tus reservas en el panel de usuario.</p>
+                <a href="panel.html" class="btn">Ir al panel</a>
+            </div>
+
+            <div class="card">
+                <h3>Destinos</h3>
+                <p>Descubre los destinos más exclusivos y planes especiales.</p>
+                <a href="destinos.html">Ver destinos</a>
+            </div>
+
+            <div class="card">
+                <h3>Ofertas</h3>
+                <p>No te pierdas las promociones temporales.</p>
+                <a href="ofertas.html">Ver ofertas</a>
+            </div>
+        </section>
+
+        <section class="newsletter container">
+            <div class="nl">
+                <h3>Únete a Volarjet</h3>
+                <p>Suscríbete y recibe ofertas exclusivas en tu correo.</p>
+                <form id="newsletterForm">
+                    <input type="email" id="nlEmail" placeholder="tu@correo.com" required>
+                    <button class="btn" type="submit">Suscribirme</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <img src="assets/logo.png" alt="Volarjet" class="logo-sm">
+                <p>Volarjet — Conectando destinos con confianza.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="pagos.html">Pagos</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+
+            <div>
+                <p>© <span id="year"></span> Volarjet</p>
+                <p><small>Política de privacidad · Términos</small></p>
+            </div>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section class="features container">
-      <article>
-        <h2>Reservas fáciles</h2>
-        <p>Busca, compara y reserva en minutos. Soporte en cada paso.</p>
-        <a href="reservas.html">Ir a Reservas →</a>
-      </article>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-      <article>
-        <h2>Pagos seguros</h2>
-        <p>Aceptamos tarjetas, PSE y otros métodos locales.</p>
-        <a href="pagos.html">Ir a Pagos →</a>
-      </article>
+        // Menú hamburguesa para pantallas pequeñas
+        const btn = document.getElementById('menuToggle');
+        const nav = document.querySelector('.site-header .nav');
+        btn.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
 
-      <article>
-        <h2>Check-in online</h2>
-        <p>Realiza tu check-in desde cualquier dispositivo y evita filas.</p>
-        <a href="checkin.html">Hacer Check-in →</a>
-      </article>
+        // Simulación de búsqueda (evita acción real)
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const origen = document.getElementById('origen').value || 'Origen';
+            const destino = document.getElementById('destino').value || 'Destino';
+            alert('Buscando vuelos: ' + origen + ' → ' + destino + '\\n(esto es una simulación)');
+            // Puedes redirigir a reservas.html con parámetros si quieres
+        });
 
-      <article>
-        <h2>Contacto y soporte</h2>
-        <p>Centro de ayuda, preguntas frecuentes y contacto directo.</p>
-        <a href="contacto.html">Contactar →</a>
-      </article>
-    </section>
-
-    <section class="cards container">
-      <div class="card large">
-        <h3>Gestión de reservas</h3>
-        <p>Administra tus reservas en el panel de usuario.</p>
-        <a href="panel.html" class="btn">Ir al panel</a>
-      </div>
-
-      <div class="card">
-        <h3>Destinos</h3>
-        <p>Descubre los destinos más exclusivos y planes especiales.</p>
-        <a href="destinos.html">Ver destinos</a>
-      </div>
-
-      <div class="card">
-        <h3>Ofertas</h3>
-        <p>No te pierdas las promociones temporales.</p>
-        <a href="ofertas.html">Ver ofertas</a>
-      </div>
-    </section>
-
-    <section class="newsletter container">
-      <div class="nl">
-        <h3>Únete a Volarjet</h3>
-        <p>Suscríbete y recibe ofertas exclusivas en tu correo.</p>
-        <form id="newsletterForm">
-          <input type="email" id="nlEmail" placeholder="tu@correo.com" required>
-          <button class="btn" type="submit">Suscribirme</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <img src="assets/logo.png" alt="" class="logo-sm">
-        <p>Conectando destinos con confianza.</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="index.html">Inicio</a>
-        <a href="reservas.html">Reservas</a>
-        <a href="pagos.html">Pagos</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-
-      <div>
-        <p>© <span id="year"></span> Volarjet</p>
-        <p><small>Política de privacidad · Términos</small></p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Menú hamburguesa para pantallas pequeñas
-    const btn = document.getElementById('menuToggle');
-    const nav = document.querySelector('.site-header .nav');
-    btn.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-
-    // Simulación de búsqueda (evita acción real)
-    document.getElementById('searchForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const origen = document.getElementById('origen').value || 'Origen';
-      const destino = document.getElementById('destino').value || 'Destino';
-      alert('Buscando vuelos: ' + origen + ' → ' + destino + '\\n(esto es una simulación)');
-      // Puedes redirigir a reservas.html con parámetros si quieres
-    });
-
-    // Newsletter simulado
-    document.getElementById('newsletterForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const em = document.getElementById('nlEmail').value.trim();
-      if(!em) return alert('Introduce un correo válido.');
-      alert('Gracias — te suscribimos: ' + em);
-      this.reset();
-    });
-  </script>
+        // Newsletter simulado
+        document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const em = document.getElementById('nlEmail').value.trim();
+            if (!em) return alert('Introduce un correo válido.');
+            alert('Gracias — te suscribimos: ' + em);
+            this.reset();
+        });
+    </script>
 </body>
+
 </html>
-
-
-
-
-
