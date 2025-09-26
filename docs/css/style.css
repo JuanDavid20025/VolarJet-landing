@@ -1153,18 +1153,4 @@ body {
 }
 
 
-/* Aumentar tamaño del logo sin cambiar su posición */
-header .brand img.logo {
-    height: 160px;
-    /* ajusta según quieras que se vea más grande */
-    width: auto;
-    display: block;
-}
 
-/* Responsive para móviles */
-@media (max-width: 880px) {
-    header .brand img.logo {
-        height: 80px;
-        /* tamaño menor en móviles */
-    }
-}
