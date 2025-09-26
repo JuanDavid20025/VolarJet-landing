@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VolarJet · Eliminar usuario</title>
+
+    <!-- CSS global (opcional) -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <!-- CSS de esta vista -->
+    <link rel="stylesheet" href="css/eliminar_usuario.css" />
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <div class="container nav">
+            <div class="brand">
+                <img id="vjLogo" src="../../assets/img/logo.png" alt="VolarJet" />
+                <div class="brand-title"></div>
+            </div>
+            <nav class="menu" aria-label="principal">
+                <a href="../index.html">Inicio</a><a href="../nueva_reserva/index.html">Reservar</a><a
+                    href="#">Check-in</a>
+                <a href="../gestionar_reservas/index.html">Gestionar</a><a href="#">Estado de vuelo</a><a
+                    href="../volarjet_servicios/index.html">Ofertas</a>
+            </nav>
+            <div class="actions">
+                <button class="btn btn-ghost" onclick="history.back()">Volver</button>
+                <button class="btn btn-cta">Reservar ahora</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="container page-head">
+        <div class="breadcrumbs">
+            <a href="#" onclick="event.preventDefault(); history.back()">Usuarios</a> · <span>Eliminar</span>
+        </div>
+        <h1 id="title">Eliminar usuario</h1>
+        <p class="muted" id="subtitle">Cargando información…</p>
+    </section>
+
+    <!-- ===== SELECTOR (si no hay id) ===== -->
+    <section id="selector" class="container card" hidden>
+        <div class="card-body">
+            <form class="toolbar" onsubmit="return false;">
+                <div>
+                    <label for="q">Buscar usuario</label>
+                    <input id="q" type="text" placeholder="Nombre, correo, documento…" />
+                </div>
+                <div>
+                    <label for="rol">Rol</label>
+                    <select id="rol">
+                        <option value="">Todos</option>
+                        <option>Cliente</option>
+                        <option>Agente</option>
+                        <option>Administrador</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="estado">Estado</label>
+                    <select id="estado">
+                        <option value="">Todos</option>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <span style="flex:1"></span>
+                <button id="btnContinue" class="btn btn-danger" type="button" disabled>Continuar →</button>
+            </form>
+
+            <div id="list" class="list" aria-live="polite" aria-busy="true" style="margin-top:12px;"></div>
+        </div>
+    </section>
+
+    <!-- ===== CONFIRMACIÓN ===== -->
+    <section id="confirm" class="container card" hidden>
+        <div class="card-body">
+            <div class="danger-box">
+                <b>⚠️ Acción irreversible.</b> Esta acción eliminará al usuario y sus accesos. No podrás deshacerla.
+            </div>
+
+            <div class="who" style="margin:14px 0 6px;">
+                <div class="avatar" id="avatar" aria-hidden="true">U</div>
+                <div>
+                    <div style="font-weight:900" id="whoName">—</div>
+                    <div class="muted" id="whoMail">—</div>
+                </div>
+            </div>
+
+            <div class="kpi" style="margin-top:10px;">
+                <div class="box">
+                    <div class="label">Documento</div>
+                    <div class="value" id="vDoc">—</div>
+                </div>
+                <div class="box">
+                    <div class="label">Rol</div>
+                    <div class="value" id="vRol">—</div>
+                </div>
+                <div class="box">
+                    <div class="label">Estado</div>
+                    <div class="value" id="vEstado">—</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="row">
+                <label class="muted" style="display:flex; align-items:center; gap:8px;">
+                    <input type="checkbox" id="ack" /> Entiendo que esta acción no se puede deshacer.
+                </label>
+                <span style="flex:1"></span>
+                <button class="btn btn-line" type="button" id="btnChoose">Elegir otro usuario</button>
+                <button class="btn btn-danger" id="btnDelete" type="button" disabled>🗑️ Eliminar
+                    definitivamente</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container foot">
+            <div>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                    <img id="vjLogo2" src="../../assets/img/logo.png" alt="VolarJet" style="height:40px;width:auto" />
+                    <b></b>
+                </div>
+                <p class="muted">Administración segura para tu equipo.</p>
+            </div>
+            <div>
+                <b>Compañía</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Prensa</a></li>
+                    <li><a href="#">Empleos</a></li>
+                </ul>
+            </div>
+            <div>
+                <b>Ayuda</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Soporte</a></li>
+                    <li><a href="#">Políticas</a></li>
+                    <li><a href="#">Reportar un problema</a></li>
+                </ul>
+            </div>
+            <div>
+                <b>Legal</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Listo</div>
+
+    <!-- JS global (opcional) -->
+    <script type="module" src="../../assets/js/main.js"></script>
+    <!-- JS de esta vista -->
+    <script type="module" src="js/eliminar_usuario.js"></script>
+</body>
+
+</html>

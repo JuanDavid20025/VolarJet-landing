@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VolarJet · Editar usuario</title>
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <!-- CSS de esta vista -->
+    <link rel="stylesheet" href="css/editar_usuario.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <div class="container nav">
+            <div class="brand">
+                <img id="vjLogo" src="../../assets/img/logo.png" alt="VolarJet" />
+                <div class="brand-title"></div>
+            </div>
+            <nav class="menu" aria-label="principal">
+                <a href="../pagina_principal/index.html">Inicio</a>
+                <a href="../nueva_reserva/index.html">Reservar</a>
+                <a href="#">Check-in</a>
+                <a href="../gestionar_reservas/index.html">Gestionar</a>
+                <a href="#">Estado de vuelo</a>
+                <a href="../volarjet_servicios/index.html">Ofertas</a>
+            </nav>
+            <div class="actions">
+                <button class="btn btn-ghost" onclick="history.back()">Volver</button>
+                <button class="btn btn-cta">Reservar ahora</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="container page-head">
+        <div class="breadcrumbs">
+            <a href="#" onclick="event.preventDefault(); history.back()">Usuarios</a> · <span>Editar</span>
+        </div>
+        <h1 id="title">Editar usuario</h1>
+        <p class="muted" id="subtitle">Cargando información…</p>
+    </section>
+
+    <!-- ===== FORM EDICIÓN ===== -->
+    <section class="container card">
+        <div class="card-body">
+            <div class="who" style="margin-bottom:10px;">
+                <div class="avatar" id="avatar">U</div>
+                <div>
+                    <div style="font-weight:900" id="whoName">—</div>
+                    <div class="row">
+                        <span id="badgeEstado" class="status ok">activo</span>
+                        <span id="badgeVerif" class="status verif">Verificado</span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="formUser" novalidate>
+                <div class="grid">
+                    <div class="field">
+                        <label for="nombres">Nombres</label>
+                        <input id="nombres" required placeholder="Juan Camilo" />
+                    </div>
+                    <div class="field">
+                        <label for="apellidos">Apellidos</label>
+                        <input id="apellidos" required placeholder="Pérez Gómez" />
+                    </div>
+                    <div class="field">
+                        <label for="email">Correo</label>
+                        <input id="email" type="email" required placeholder="email@volarjet.com" />
+                    </div>
+                    <div class="field">
+                        <label for="doc">Documento</label>
+                        <input id="doc" required placeholder="123456789" />
+                    </div>
+                    <div class="field">
+                        <label for="tel">Teléfono</label>
+                        <input id="tel" placeholder="+57 300 000 0000" />
+                    </div>
+                    <div class="field">
+                        <label for="rol">Rol</label>
+                        <select id="rol">
+                            <option>Cliente</option>
+                            <option>Agente</option>
+                            <option>Administrador</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="estado">Estado</label>
+                        <select id="estado">
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="verif">Verificación</label>
+                        <select id="verif">
+                            <option value="si">Verificado</option>
+                            <option value="no">No verificado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="row">
+                    <div class="muted" id="audit">Creado: — · Última actualización: —</div>
+                    <span style="flex:1"></span>
+                    <button type="button" class="btn btn-line" id="btnReset">🔒 Restablecer contraseña</button>
+                    <button type="button" class="btn btn-danger" id="btnDelete">🗑️ Eliminar</button>
+                    <button type="submit" class="btn btn-cta" id="btnSave">💾 Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container foot">
+            <div>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                    <img id="vjLogo2" src="../../assets/img/logo.png" alt="VolarJet" style="height:40px;width:auto" />
+                    <b></b>
+                </div>
+                <p class="muted">Administra tus usuarios de forma rápida y clara.</p>
+            </div>
+            <div>
+                <b>Compañía</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Prensa</a></li>
+                    <li><a href="#">Empleos</a></li>
+                </ul>
+            </div>
+            <div>
+                <b>Ayuda</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Soporte</a></li>
+                    <li><a href="#">Políticas</a></li>
+                    <li><a href="#">Reportar un problema</a></li>
+                </ul>
+            </div>
+            <div>
+                <b>Legal</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS global (si aplica) -->
+    <script type="module" src="../../assets/js/main.js"></script>
+    <!-- JS de esta vista -->
+    <script type="module" src="js/editar_usuario.js"></script>
+</body>
+
+</html>

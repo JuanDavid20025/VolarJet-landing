@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet · Iniciar sesión</title>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <!-- CSS de la vista -->
+    <link rel="stylesheet" href="css/inicio_sesion.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="../../assets/img/logo.png" class="logo" alt="Logo VolarJet">
+    </div>
+
+    <div class="welcome">¡Bienvenido!</div>
+
+    <form id="loginForm" novalidate>
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-key"></i>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+        </div>
+        <button type="submit">Iniciar sesión</button>
+        <p id="msg" aria-live="polite"></p>
+    </form>
+
+    <div class="links">
+        <a href="#">¿Olvidaste tu contraseña?</a><br>
+        <span>¿Aún no tienes una cuenta? <a href="../registro/index.html">Únete aquí</a></span>
+    </div>
+
+    <footer>
+        <a href="#"><i class="fas fa-home"></i><span>Inicio</span></a>
+        <a href="#"><i class="fas fa-plane"></i><span>Tus vuelos</span></a>
+        <a href="#"><i class="fas fa-tags"></i><span>Ofertas</span></a>
+        <a href="#"><i class="fas fa-calendar-check"></i><span>Reservar</span></a>
+        <a href="#"><i class="fas fa-sign-in-alt"></i><span>Check-In</span></a>
+        <a href="#"><i class="fas fa-user"></i><span>Tu perfil</span></a>
+    </footer>
+
+    <!-- JS global -->
+    <script type="module" src="../../assets/js/main.js"></script>
+    <!-- JS de la vista -->
+    <script type="module" src="js/inicio_sesion.js"></script>
+</body>
+
+</html>

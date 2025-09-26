@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>VolarJet — CP-02 Gestión de Tareas (UI Demo)</title>
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .shadow-soft{box-shadow:0 10px 25px rgba(0,0,0,.06)}
+    .glass{backdrop-filter: blur(6px); background: rgba(255,255,255,.7)}
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-800">
+  <div class="max-w-6xl mx-auto p-6 md:p-10 space-y-6">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">VolarJet — Gestión de Tareas</h1>
+        <p class="text-sm text-slate-500">CP-02 · Evidencias por interfaz (demo sin backend)</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <!-- Reemplaza logo_volarjet.png por tu logo real -->
+        <img class="h-10 w-auto rounded-lg ring-1 ring-slate-200" src="../../assets/img/logo.png" alt="VolarJet" title="Reemplaza este archivo por tu logo real"/>
+      </div>
+    </header>
+
+    <!-- Card: Nueva tarea / Editar -->
+    <section class="glass shadow-soft rounded-2xl ring-1 ring-slate-200">
+      <div class="p-5 md:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 id="formTitle" class="text-lg font-semibold">Nueva tarea</h2>
+          <div class="flex gap-2">
+            <button id="saveBtn" class="inline-flex items-center gap-2 px-4 h-10 rounded-xl bg-sky-600 text-white hover:bg-sky-700 active:scale-[.98] transition">Guardar</button>
+            <button id="saveEditBtn" class="hidden inline-flex items-center gap-2 px-4 h-10 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 active:scale-[.98] transition">Guardar cambios</button>
+            <button id="cancelEditBtn" class="hidden inline-flex items-center gap-2 px-4 h-10 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 active:scale-[.98] transition">Cancelar</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div class="md:col-span-2">
+            <label class="text-sm text-slate-600" for="title">Título *</label>
+            <input id="title" class="mt-1 w-full h-10 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Checklist hangar 3"/>
+            <p id="titleError" class="hidden text-xs text-rose-600 mt-1">El título es obligatorio.</p>
+          </div>
+          <div>
+            <label class="text-sm text-slate-600" for="dueDate">Fecha límite</label>
+            <input id="dueDate" type="date" class="mt-1 w-full h-10 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"/>
+          </div>
+          <div>
+            <label class="text-sm text-slate-600" for="priority">Prioridad</label>
+            <select id="priority" class="mt-1 w-full h-10 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500">
+              <option>Alta</option>
+              <option selected>Media</option>
+              <option>Baja</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-sm text-slate-600" for="status">Estado</label>
+            <select id="status" class="mt-1 w-full h-10 px-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500">
+              <option selected>Pendiente</option>
+              <option>En Proceso</option>
+              <option>Cerrada</option>
+            </select>
+          </div>
+          <div class="md:col-span-5">
+            <label class="text-sm text-slate-600" for="notes">Notas</label>
+            <textarea id="notes" rows="3" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Detalles opcionales"></textarea>
+          </div>
+        </div>
+
+        <div id="editingBadge" class="hidden mt-3 inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 ring-1 ring-amber-300">
+          Editando tarea <span id="editingId">#—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card: Lista de tareas -->
+    <section class="glass shadow-soft rounded-2xl ring-1 ring-slate-200">
+      <div class="p-5 md:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-semibold">Tareas</h2>
+          <p class="text-xs text-slate-500">Total: <span id="count">0</span></p>
+        </div>
+
+        <div class="grid grid-cols-12 text-xs font-semibold text-slate-500 px-3 pb-2">
+          <div class="col-span-5">Título</div>
+          <div class="col-span-2">Estado</div>
+          <div class="col-span-2">Prioridad</div>
+          <div class="col-span-2">Vencimiento</div>
+          <div class="col-span-1 text-right">Acciones</div>
+        </div>
+
+        <div id="list" class="space-y-2"></div>
+      </div>
+    </section>
+
+    <footer class="text-xs text-slate-500 text-center">Demo local ⚠ No hay backend · Usa este mock para pantallazos CP-02</footer>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="hidden fixed top-5 right-5 z-50">
+    <div id="toastInner" class="glass shadow-soft ring-1 ring-slate-200 rounded-2xl px-4 py-3 text-sm flex items-center gap-2"></div>
+  </div>
+
+  <script>
+    const title = document.getElementById('title');
+    const dueDate = document.getElementById('dueDate');
+    const priority = document.getElementById('priority');
+    const statusSel = document.getElementById('status');
+    const notes = document.getElementById('notes');
+    const count = document.getElementById('count');
+    const list = document.getElementById('list');
+    const titleError = document.getElementById('titleError');
+
+    const saveBtn = document.getElementById('saveBtn');
+    const saveEditBtn = document.getElementById('saveEditBtn');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+    const editingBadge = document.getElementById('editingBadge');
+    const editingId = document.getElementById('editingId');
+    const formTitle = document.getElementById('formTitle');
+
+    let tasks = [
+      { id: 101, title: 'Checklist hangar 1', status: 'Pendiente', priority: 'Media', dueDate: '2025-10-01' },
+      { id: 102, title: 'Inspección rampa', status: 'En Proceso', priority: 'Alta', dueDate: '2025-09-30' },
+    ];
+    let editing = null;
+
+    function showToast(msg, type='success'){
+      const toast = document.getElementById('toast');
+      const inner = document.getElementById('toastInner');
+      inner.innerHTML = '';
+      const icon = document.createElement('span');
+      icon.innerHTML = type==='success' ? '✅' : '⚠️';
+      const text = document.createElement('span');
+      text.textContent = msg;
+      inner.className = `glass shadow-soft ring-1 rounded-2xl px-4 py-3 text-sm flex items-center gap-2 ${type==='success' ? 'bg-green-50' : 'bg-rose-50'}`;
+      inner.appendChild(icon); inner.appendChild(text);
+      toast.classList.remove('hidden');
+      setTimeout(()=> toast.classList.add('hidden'), 1800);
+    }
+
+    function resetForm(){
+      title.value = '';
+      dueDate.value = '';
+      priority.value = 'Media';
+      statusSel.value = 'Pendiente';
+      notes.value = '';
+      titleError.classList.add('hidden');
+    }
+
+    function statusBadgeClass(s){
+      if(s==='Pendiente') return 'bg-amber-50 text-amber-800 ring-amber-200';
+      if(s==='En Proceso') return 'bg-sky-50 text-sky-800 ring-sky-200';
+      return 'bg-emerald-50 text-emerald-800 ring-emerald-200';
+    }
+
+    function render(){
+      count.textContent = tasks.length;
+      list.innerHTML = '';
+      tasks.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'grid grid-cols-12 items-center gap-3 py-2 px-3 hover:bg-slate-50 rounded-xl';
+        row.innerHTML = `
+          <div class="col-span-5">
+            <p class="font-medium">${t.title}</p>
+            <p class="text-xs text-slate-500">#${t.id}</p>
+          </div>
+          <div class="col-span-2 text-sm">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] ring-1 ${statusBadgeClass(t.status)}">${t.status}</span>
+          </div>
+          <div class="col-span-2 text-sm">${t.priority}</div>
+          <div class="col-span-2 text-sm">${t.dueDate || '—'}</div>
+          <div class="col-span-1 text-right">
+            <div class="inline-flex items-center gap-2">
+              <button class="text-sky-700 hover:text-sky-900 font-medium">Editar</button>
+              <button class="text-emerald-700 hover:text-emerald-900 text-xs font-semibold">Avanzar</button>
+            </div>
+          </div>`;
+        const [btnEdit, btnNext] = row.querySelectorAll('button');
+        btnEdit.addEventListener('click', ()=> startEdit(t));
+        btnNext.addEventListener('click', ()=> advanceStatus(t.id));
+        list.appendChild(row);
+      });
+    }
+
+    function createTask(){
+      if(!title.value.trim()){
+        titleError.classList.remove('hidden');
+        showToast('El título es obligatorio', 'warn');
+        return;
+      }
+      const newTask = {
+        id: Math.max(...tasks.map(t=>t.id)) + 1,
+        title: title.value.trim(),
+        status: statusSel.value,
+        priority: priority.value,
+        dueDate: dueDate.value || '',
+        notes: notes.value || ''
+      };
+      tasks = [newTask, ...tasks];
+      resetForm();
+      showToast(`Tarea creada (#${newTask.id})`);
+      render();
+    }
+
+    function startEdit(task){
+      editing = task;
+      title.value = task.title;
+      dueDate.value = task.dueDate || '';
+      priority.value = task.priority;
+      statusSel.value = task.status;
+      notes.value = task.notes || '';
+      editingBadge.classList.remove('hidden');
+      editingId.textContent = `#${task.id}`;
+      formTitle.textContent = 'Editar tarea';
+      saveBtn.classList.add('hidden');
+      saveEditBtn.classList.remove('hidden');
+      cancelEditBtn.classList.remove('hidden');
+    }
+
+    function applyEdit(){
+      if(!editing) return;
+      if(!title.value.trim()){
+        titleError.classList.remove('hidden');
+        showToast('El título es obligatorio', 'warn');
+        return;
+      }
+      tasks = tasks.map(t => t.id===editing.id ? {
+        ...t,
+        title: title.value.trim(),
+        dueDate: dueDate.value || '',
+        priority: priority.value,
+        status: statusSel.value,
+      } : t);
+      editing = null;
+      resetForm();
+      editingBadge.classList.add('hidden');
+      formTitle.textContent = 'Nueva tarea';
+      saveBtn.classList.remove('hidden');
+      saveEditBtn.classList.add('hidden');
+      cancelEditBtn.classList.add('hidden');
+      showToast('Cambios guardados');
+      render();
+    }
+
+    function cancelEdit(){
+      editing = null; resetForm(); editingBadge.classList.add('hidden');
+      formTitle.textContent = 'Nueva tarea';
+      saveBtn.classList.remove('hidden');
+      saveEditBtn.classList.add('hidden');
+      cancelEditBtn.classList.add('hidden');
+    }
+
+    function advanceStatus(id){
+      const order = ['Pendiente','En Proceso','Cerrada'];
+      tasks = tasks.map(t=>{
+        if(t.id!==id) return t;
+        const i = order.indexOf(t.status);
+        const next = order[(i+1) % order.length];
+        return {...t, status: next};
+      });
+      showToast('Estado actualizado');
+      render();
+    }
+
+    saveBtn.addEventListener('click', createTask);
+    saveEditBtn.addEventListener('click', applyEdit);
+    cancelEditBtn.addEventListener('click', cancelEdit);
+
+    render();
+  </script>
+
+  <!--
+  === Guía de pantallazos ===
+  1) CP02_1_crear_tarea_form.png — Formulario diligenciado ANTES de guardar (botón Guardar visible).
+  2) CP02_2_lista_despues_crear.png — Lista tras guardar con la nueva tarea (estado Pendiente) y toast "Tarea creada (#ID)" si aparece.
+  3) CP02_3a_editar_form.png — Form en modo Edición (badge "Editando tarea #ID"). Cambiar Estado o Prioridad.
+  4) CP02_3b_lista_despues_editar.png — Lista con cambios reflejados (Estado/Fecha/Título).
+  5) CP02_4_flujo_estado.png — Usar botón "Avanzar" en la fila para transiciones Pendiente → En Proceso → Cerrada.
+  6) (Opcional) CP02_5_validaciones.png — Guardar sin título → error "El título es obligatorio".
+  -->
+</body>
+</html>

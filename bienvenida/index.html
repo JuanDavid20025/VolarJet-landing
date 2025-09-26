@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet · Inicio</title>
+
+    <!-- Fuentes e íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- OJO: mismo folder -->
+    <link rel="stylesheet" href="./servicios.css">
+</head>
+
+<body>
+    <!-- NAV -->
+    <header class="nav">
+        <div class="nav__wrap">
+            <a href="#" class="brand">
+                <img src="logo.png" alt="VolarJet" class="brand__logo">
+                <span class="brand__name">VOLARJET</span>
+            </a>
+            <nav class="menu">
+                <a href="#">Reservar</a>
+                <a href="#">Check-in</a>
+                <a href="#">Gestionar</a>
+                <a href="#">Estado de vuelo</a>
+                <a href="#">Ofertas</a>
+            </nav>
+            <div class="nav__cta">
+                <a class="btn btn--ghost" href="#"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__inner">
+            <h1>Bienvenido a VolarJet</h1>
+            <p>Tu mundo más cerca: tarifas claras, horarios flexibles y atención 24/7.</p>
+
+            <!-- BUSCADOR -->
+            <form id="formVuelos" class="search card">
+                <div class="field">
+                    <label><i class="fa-solid fa-plane-departure"></i> Origen</label>
+                    <input id="origen" list="listaCiudades" placeholder="Bogotá (BOG)" required>
+                </div>
+                <div class="field">
+                    <label><i class="fa-solid fa-plane-arrival"></i> Destino</label>
+                    <input id="destino" list="listaCiudades" placeholder="Medellín (MDE)" required>
+                </div>
+                <div class="field">
+                    <label><i class="fa-regular fa-calendar"></i> Ida</label>
+                    <input id="ida" type="date" required>
+                </div>
+                <div class="field">
+                    <label><i class="fa-regular fa-calendar"></i> Vuelta</label>
+                    <input id="vuelta" type="date">
+                </div>
+                <div class="field">
+                    <label><i class="fa-solid fa-user-group"></i> Pasajeros</label>
+                    <div class="pill">
+                        <button type="button" class="step" data-target="pax" data-step="-1"
+                            aria-label="Restar">−</button>
+                        <span id="paxLabel">1</span>
+                        <button type="button" class="step" data-target="pax" data-step="1" aria-label="Sumar">+</button>
+                    </div>
+                    <input id="pax" type="hidden" value="1">
+                </div>
+                <div class="field">
+                    <label><i class="fa-solid fa-chair"></i> Cabina</label>
+                    <select id="cabina">
+                        <option value="economy" selected>Economy</option>
+                        <option value="plus">Economy Plus</option>
+                        <option value="business">Business</option>
+                    </select>
+                </div>
+
+                <div class="search__actions">
+                    <label class="toggle">
+                        <input id="soloIda" type="checkbox">
+                        <span>Solo ida</span>
+                    </label>
+                    <button class="btn btn--primary" id="btnBuscar" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> Buscar vuelos
+                    </button>
+                </div>
+            </form>
+
+            <div class="badges">
+                <span class="badge"><i class="fa-regular fa-star"></i> Mejor tarifa disponible</span>
+                <span class="badge"><i class="fa-solid fa-shield-halved"></i> Sin cargos ocultos</span>
+                <span class="badge"><i class="fa-regular fa-clock"></i> Atención 24/7</span>
+            </div>
+        </div>
+
+        <!-- datalist -->
+        <datalist id="listaCiudades">
+            <option value="Bogotá (BOG)">
+            <option value="Medellín (MDE)">
+            <option value="Cali (CLO)">
+            <option value="Barranquilla (BAQ)">
+            <option value="Cartagena (CTG)">
+            <option value="San Andrés (ADZ)">
+        </datalist>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="container">
+        <h2>Todo para tu viaje</h2>
+        <div class="features">
+            <article class="feature card">
+                <span class="tag tag--green"><i class="fa-solid fa-check"></i> Check-in</span>
+                <h3>Haz tu check-in en minutos</h3>
+                <p>Obtén tu pase de abordar y ahorra tiempo en el aeropuerto.</p>
+            </article>
+            <article class="feature card">
+                <span class="tag tag--blue"><i class="fa-solid fa-gear"></i> Gestionar</span>
+                <h3>Gestiona tu reserva</h3>
+                <p>Cambia fecha, asiento o servicios desde la app.</p>
+            </article>
+            <article class="feature card">
+                <span class="tag tag--cyan"><i class="fa-regular fa-circle-check"></i> Estado</span>
+                <h3>Estado de vuelo</h3>
+                <p>Consulta salidas, llegadas y alertas en tiempo real.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- DESTINOS -->
+    <section class="container">
+        <h2>Destinos destacados</h2>
+        <div class="destinos">
+            <a class="dest card"
+                style="--img:url('https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1600&auto=format&fit=crop');">
+                <div>
+                    <h4>Bogotá</h4><small>Desde $129.000 COP</small>
+                </div>
+            </a>
+            <a class="dest card"
+                style="--img:url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop');">
+                <div>
+                    <h4>Medellín</h4><small>Desde $99.000 COP</small>
+                </div>
+            </a>
+            <a class="dest card"
+                style="--img:url('https://images.unsplash.com/photo-1520975922284-8b456906c813?q=80&w=1600&auto=format&fit=crop');">
+                <div>
+                    <h4>Cartagena</h4><small>Desde $159.000 COP</small>
+                </div>
+            </a>
+            <a class="dest card"
+                style="--img:url('https://images.unsplash.com/photo-1509401934319-c03fe88f1ab1?q=80&w=1600&auto=format&fit=crop');">
+                <div>
+                    <h4>Cali</h4><small>Desde $119.000 COP</small>
+                </div>
+            </a>
+            <a class="dest card"
+                style="--img:url('https://images.unsplash.com/photo-1502920917128-1aa500764ce7?q=80&w=1600&auto=format&fit=crop');">
+                <div>
+                    <h4>Barranquilla</h4><small>Desde $139.000 COP</small>
+                </div>
+            </a>
+            <a class="dest card"
+                style="--img:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop');">
+                <div>
+                    <h4>San Andrés</h4><small>Desde $159.000 COP</small>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- APP + NEWSLETTER -->
+    <section class="container promo card">
+        <div class="promo__app">
+            <h3>Descarga la app VolarJet</h3>
+            <p>Check-in, notificaciones y tus viajes a un toque.</p>
+            <div class="store">
+                <a href="#" class="btn btn--soft"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                <a href="#" class="btn btn--soft"><i class="fa-brands fa-apple"></i> App Store</a>
+            </div>
+        </div>
+        <div class="promo__mail">
+            <h3>Ofertas por correo</h3>
+            <form id="formMail" class="mail">
+                <input id="emailOfertas" type="email" placeholder="tu@correo.com" required>
+                <button class="btn btn--dashed" type="submit">Suscribirme</button>
+            </form>
+            <small id="mailMsg" class="muted"></small>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__grid">
+            <div>
+                <h4>VolarJet</h4>
+                <ul>
+                    <li><a href="#">Acerca de nosotros</a></li>
+                    <li><a href="#">Sala de prensa</a></li>
+                    <li><a href="#">Sostenibilidad</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Cambios y reembolsos</a></li>
+                    <li><a href="#">Equipaje</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Síguenos</h4>
+                <ul class="social">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i> X</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy">© 2025 VolarJet S.A.S. · Todos los derechos reservados</div>
+    </footer>
+
+    <!-- OJO: mismo folder -->
+    <script src="./servicios.js"></script>
+</body>
+
+</html>

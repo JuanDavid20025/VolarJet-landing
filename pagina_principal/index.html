@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VolarJet · Explora más</title>
+    <meta name="color-scheme" content="light" />
+
+    <!-- CSS global -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <!-- CSS de la vista -->
+    <link rel="stylesheet" href="css/pagina_principal.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <div class="container nav">
+            <div class="brand">
+                <img id="vjLogo" src="../../assets/img/logo.png" alt="VolarJet" />
+                <div class="brand-title"></div>
+            </div>
+            <nav class="menu" aria-label="principal">
+                <a href="#"></a><a href="#">Reservar</a><a href="#">Check-in</a>
+                <a href="#">Gestionar</a><a href="#">Estado de vuelo</a><a href="#">Ofertas</a>
+            </nav>
+            <div class="actions">
+                <button class="btn btn-ghost">Iniciar sesión</button>
+                <button class="btn btn-cta">Reservar ahora</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO con TABS de acciones ===== -->
+    <section class="hero">
+        <div class="container">
+            <h1>Tu próximo vuelo comienza aquí ✈️</h1>
+            <p>Busca, gestiona, realiza check-in y consulta el estado de tu vuelo en un solo lugar.</p>
+
+            <div class="tabs" id="tabs">
+                <div class="tab-head">
+                    <button class="tab-btn active" data-tab="buscador">Vuelos</button>
+                    <button class="tab-btn" data-tab="estado">Estado de vuelo</button>
+                    <button class="tab-btn" data-tab="checkin">Check-in</button>
+                    <button class="tab-btn" data-tab="gestionar">Gestionar reserva</button>
+                </div>
+
+                <!-- TAB 1: Buscador -->
+                <div class="tab-body" id="buscador">
+                    <form id="formVuelos" novalidate>
+                        <div class="grid">
+                            <div class="field">
+                                <label for="origen">Origen</label>
+                                <input list="aerops" id="origen" placeholder="Bogotá (BOG)" required />
+                            </div>
+                            <div class="field">
+                                <label for="destino">Destino</label>
+                                <input list="aerops" id="destino" placeholder="Medellín (MDE)" required />
+                            </div>
+                            <div class="field">
+                                <label for="ida">Fecha ida</label>
+                                <input id="ida" type="date" required />
+                            </div>
+                            <div class="field">
+                                <label for="vuelta">Fecha vuelta</label>
+                                <input id="vuelta" type="date" />
+                            </div>
+                            <div class="field">
+                                <label for="pas">Pasajeros</label>
+                                <input id="pas" type="number" min="1" value="1" />
+                            </div>
+                            <div class="field">
+                                <label for="cabina">Cabina</label>
+                                <select id="cabina">
+                                    <option>Economy</option>
+                                    <option>Business</option>
+                                    <option>First</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="badges" aria-hidden="true">
+                            <span class="badge">Mejor tarifa</span>
+                            <span class="badge">Sin cargos ocultos</span>
+                            <span class="badge">Atención 24/7</span>
+                        </div>
+                        <div class="actions-row">
+                            <button class="btn-search" type="submit">🔎 Buscar vuelos</button>
+                            <button class="btn-clean" type="reset">Limpiar</button>
+                        </div>
+                        <datalist id="aerops">
+                            <option value="Bogotá (BOG)">
+                            <option value="Medellín (MDE)">
+                            <option value="Cali (CLO)">
+                            <option value="Cartagena (CTG)">
+                            <option value="Barranquilla (BAQ)">
+                        </datalist>
+                    </form>
+                </div>
+
+                <!-- TAB 2: Estado de vuelo -->
+                <div class="tab-body" id="estado" hidden>
+                    <form id="formEstado">
+                        <div class="grid">
+                            <div class="field"><label for="cod">Código (ej. VJ 123)</label><input id="cod"
+                                    placeholder="VJ 123" /></div>
+                            <div class="field"><label for="fechaE">Fecha</label><input id="fechaE" type="date" /></div>
+                            <div class="field"><label for="origenE">Origen</label><input id="origenE" list="aerops"
+                                    placeholder="BOG" /></div>
+                            <div class="field"><label for="destE">Destino</label><input id="destE" list="aerops"
+                                    placeholder="MDE" /></div>
+                        </div>
+                        <div class="actions-row">
+                            <button class="btn-search" type="submit">📡 Consultar estado</button>
+                            <button class="btn-clean" type="reset">Limpiar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TAB 3: Check-in -->
+                <div class="tab-body" id="checkin" hidden>
+                    <form id="formCheck">
+                        <div class="grid">
+                            <div class="field"><label for="reserva">Código de reserva (PNR)</label><input id="reserva"
+                                    placeholder="ABC123" required /></div>
+                            <div class="field"><label for="apellido">Apellido</label><input id="apellido"
+                                    placeholder="Pérez" required /></div>
+                        </div>
+                        <div class="actions-row">
+                            <button class="btn-search" type="submit">🧾 Iniciar check-in</button>
+                            <button class="btn-clean" type="reset">Limpiar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TAB 4: Gestionar -->
+                <div class="tab-body" id="gestionar" hidden>
+                    <form id="formGest">
+                        <div class="grid">
+                            <div class="field"><label for="pnrG">Código de reserva</label><input id="pnrG"
+                                    placeholder="ABC123" required /></div>
+                            <div class="field"><label for="mailG">Correo electrónico</label><input id="mailG"
+                                    type="email" placeholder="email@ejemplo.com" required /></div>
+                        </div>
+                        <div class="actions-row">
+                            <button class="btn-search" type="submit">🛠️ Gestionar</button>
+                            <button class="btn-clean" type="reset">Limpiar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DESTINOS POPULARES ===== -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <h2>Destinos populares</h2>
+                <a href="#">Ver todos →</a>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="city"><span>Bogotá → Medellín</span><span class="price">desde $89.900</span></div>
+                </div>
+                <div class="card">
+                    <div class="city"><span>Bogotá → Cartagena</span><span class="price">desde $119.900</span></div>
+                </div>
+                <div class="card">
+                    <div class="city"><span>Medellín → San Andrés</span><span class="price">desde $149.900</span></div>
+                </div>
+                <div class="card">
+                    <div class="city"><span>Cali → Bogotá</span><span class="price">desde $99.900</span></div>
+                </div>
+                <div class="card">
+                    <div class="city"><span>Barranquilla → Medellín</span><span class="price">desde $139.900</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="city"><span>Bogotá → Lima</span><span class="price">desde $499.900</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OFERTAS / CAROUSEL ===== -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <h2>Ofertas relámpago</h2>
+                <div class="ctrl">
+                    <button id="prev">◀</button>
+                    <button id="next">▶</button>
+                </div>
+            </div>
+            <div class="carousel" id="carousel">
+                <div class="offer"><b>2x1 fin de semana</b>
+                    <p>Aplica en rutas nacionales seleccionadas.</p><button class="btn-cta">Aprovechar</button>
+                </div>
+                <div class="offer"><b>Escápate en noviembre</b>
+                    <p>Hasta 35% OFF en Caribe.</p><button class="btn-cta">Ver destinos</button>
+                </div>
+                <div class="offer"><b>Vuela ligero</b>
+                    <p>Tarifa Light con 15% de descuento.</p><button class="btn-cta">Comprar</button>
+                </div>
+                <div class="offer"><b>Millas x2</b>
+                    <p>Duplica tus millas en rutas Andinas.</p><button class="btn-cta">Acumular</button>
+                </div>
+                <div class="offer"><b>Early Bird 2026</b>
+                    <p>Congela precio para temporada alta.</p><button class="btn-cta">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFICIOS ===== -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <h2>Beneficios VolarJet</h2>
+            </div>
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="icon">💳</div>
+                    <div><b>Pago flexible</b>
+                        <p class="muted">Diferidos, PSE, tarjetas y billeteras.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="icon">🧾</div>
+                    <div><b>Check-in en 1 minuto</b>
+                        <p class="muted">Sin filas, directo al control.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="icon">🧳</div>
+                    <div><b>Equipaje inteligente</b>
+                        <p class="muted">Suma bultos cuando lo necesites.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="icon">🔔</div>
+                    <div><b>Alertas en tiempo real</b>
+                        <p class="muted">Estado de vuelo y puerta en tu móvil.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="icon">🛡️</div>
+                    <div><b>Seguro de viaje</b>
+                        <p class="muted">Asistencia médica y reprogramación.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="icon">⭐</div>
+                    <div><b>Millas & upgrades</b>
+                        <p class="muted">Suma puntos y mejora de cabina.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== APP + NEWSLETTER ===== -->
+    <section>
+        <div class="container split">
+            <div>
+                <div class="section-head">
+                    <h2>Lleva VolarJet en tu bolsillo</h2>
+                </div>
+                <div class="phone" aria-label="Mockup app móvil" role="img"></div>
+                <p class="muted">Descarga la app para hacer check-in, recibir alertas y gestionar tus viajes.</p>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button class="btn btn-cta">App Store</button>
+                    <button class="btn btn-cta">Google Play</button>
+                </div>
+            </div>
+            <div class="newsletter">
+                <h3 style="margin-top:0">Suscríbete a ofertas</h3>
+                <p class="muted">Te enviaremos promociones y tarifas relámpago.</p>
+                <div class="row">
+                    <input id="mailN" type="email" placeholder="tu@email.com" />
+                    <button class="btn btn-cta" id="susBtn">Quiero ahorrar</button>
+                </div>
+                <small class="muted">Puedes darte de baja cuando quieras.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <h2>Preguntas frecuentes</h2>
+            </div>
+            <details>
+                <summary>¿Cómo cambio mi vuelo?</summary>
+                <p>En “Gestionar reserva” con tu PNR y correo podrás cambiar fecha, hora o cabina según disponibilidad.
+                </p>
+            </details>
+            <details>
+                <summary>¿Qué equipaje incluye la tarifa?</summary>
+                <p>La tarifa Light incluye bolso personal. Puedes añadir cabina y bodega en el flujo de compra.</p>
+            </details>
+            <details>
+                <summary>¿Puedo viajar con mascotas?</summary>
+                <p>Sí. Aceptamos mascotas en cabina y bodega según peso y rutas. Consulta políticas antes de comprar.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container foot">
+            <div>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                    <img id="vjLogo2" src="../../assets/img/logo.png" alt="VolarJet" />
+                    <b></b>
+                </div>
+                <p class="muted">Tarifas claras, horarios flexibles y atención 24/7.</p>
+            </div>
+            <div>
+                <b>Compañía</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Prensa</a></li>
+                    <li><a href="#">Empleos</a></li>
+                </ul>
+            </div>
+            <div>
+                <b>Ayuda</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Soporte</a></li>
+                    <li><a href="#">Reembolsos</a></li>
+                    <li><a href="#">Políticas</a></li>
+                </ul>
+            </div>
+            <div>
+                <b>Legal</b>
+                <ul style="list-style:none; padding:0; margin:8px 0 0;">
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS global (si lo usas) -->
+    <script type="module" src="../../assets/js/main.js"></script>
+    <!-- JS de la vista -->
+    <script type="module" src="js/pagina_principal.js"></script>
+</body>
+
+</html>

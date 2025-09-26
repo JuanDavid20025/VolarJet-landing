@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Reservas — Volarjet</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Buscar vuelos</h1>
+        <form id="searchForm">
+            <label>Origen</label>
+            <input type="text" id="origen" required>
+            <label>Destino</label>
+            <input type="text" id="destino" required>
+            <label>Salida</label>
+            <input type="date" id="salida" required>
+            <button class="btn" type="submit">Buscar</button>
+        </form>
+        <div id="results"></div>
+    </main>
+    <script src="js/firebase-init.js"></script>
+</body>
+
+</html>
