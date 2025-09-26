@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Destinos — Volarjet</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-grid">
+            <a class="brand" href="index.html">
+                <img src="assets/logo.png" alt="Volarjet" class="logo">
+                <span class="brand-text">Volarjet</span>
+            </a>
+            <nav class="nav" aria-label="Menú principal">
+                <a href="index.html">Inicio</a>
+                <a href="destinos.html">Destinos</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="checkin.html">Check-in</a>
+                <a href="pagos.html">Pagos</a>
+                <a href="contacto.html">Contacto</a>
+                <a class="btn-outline" href="registro.html">Registro</a>
+                <a class="btn" href="login.html">Iniciar sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding:32px 18px;">
+        <h1>Destinos</h1>
+        <p>Explora los destinos a los que vuela Volarjet. Selecciona una ciudad para ver rutas, horarios y promociones.
+        </p>
+
+        <section class="features" style="margin-top:18px;">
+            <article>
+                <h3>Bogotá</h3>
+                <p>Conexiones nacionales e internacionales desde el Aeropuerto El Dorado.</p>
+                <a href="reservas.html">Ver vuelos →</a>
+            </article>
+
+            <article>
+                <h3>Cartagena</h3>
+                <p>Vuelos directos y ofertas de temporada.</p>
+                <a href="ofertas.html">Ver promociones →</a>
+            </article>
+
+            <article>
+                <h3>Medellín</h3>
+                <p>Horarios frecuentes y tarifas competitivas.</p>
+                <a href="reservas.html">Reservar →</a>
+            </article>
+        </section>
+
+        <section style="margin-top:26px;">
+            <h2>Buscar por región</h2>
+            <p>Próximamente: filtros por región, duración y tipo de vuelo.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <img src="assets/logo.png" alt="Volarjet" class="logo-sm">
+                <p>Volarjet — Conectando destinos con confianza.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="pagos.html">Pagos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div>
+                <p>© <span id="year"></span> Volarjet</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
