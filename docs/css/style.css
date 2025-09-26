@@ -390,7 +390,7 @@ body {
 }
 /* -------- LOGO: tamaño consistente -------- */
 .logo {
-  height: 72px;        /* tamaño principal del logo en header */
+  height: 172px;        /* tamaño principal del logo en header */
   width: auto;
   display: inline-block;
   vertical-align: middle;
