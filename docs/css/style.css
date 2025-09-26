@@ -1158,11 +1158,6 @@ body {
     .offer-hero {
         padding: 28px 0;
     }
-}
-.brand img.logo {
-    height: 173px;
-    /* <-- aquí */
-    width: auto;
-}
+
 
 
