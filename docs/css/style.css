@@ -35,7 +35,7 @@ header {
 }
 
 .brand img.logo {
-  height: 120px; /* altura grande para el logo */
+  height: 90px; /* altura grande para el logo */
   width: auto;
   display: block;
 }
