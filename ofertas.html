@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ofertas — Volarjet</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-grid">
+            <a class="brand" href="index.html">
+                <img src="assets/logo.png" alt="Volarjet" class="logo">
+                <span class="brand-text">Volarjet</span>
+            </a>
+            <nav class="nav" aria-label="Menú principal">
+                <a href="index.html">Inicio</a>
+                <a href="destinos.html">Destinos</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="checkin.html">Check-in</a>
+                <a href="pagos.html">Pagos</a>
+                <a href="contacto.html">Contacto</a>
+                <a class="btn-outline" href="registro.html">Registro</a>
+                <a class="btn" href="login.html">Iniciar sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding:32px 18px;">
+        <h1>Ofertas y promociones</h1>
+        <p>Aquí publicamos las promociones vigentes. Revisa esta sección regularmente para no perderte descuentos
+            exclusivos.</p>
+
+        <section class="cards" style="margin-top:18px;">
+            <div class="card">
+                <h3>Promo Cartagena</h3>
+                <p>Ida y vuelta desde $XXX. Vigencia: hasta fin de mes.</p>
+                <a href="reservas.html" class="btn">Reservar</a>
+            </div>
+
+            <div class="card">
+                <h3>Descuento familia</h3>
+                <p>Hasta 20% en reservas familiares (3+ pasajeros).</p>
+                <a href="reservas.html" class="btn">Aplicar</a>
+            </div>
+
+            <div class="card">
+                <h3>Millas dobles</h3>
+                <p>Acumula el doble de millas en rutas seleccionadas.</p>
+                <a href="registro.html">Únete →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <img src="assets/logo.png" alt="Volarjet" class="logo-sm">
+                <p>Volarjet — Conectando destinos con confianza.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="pagos.html">Pagos</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div>
+                <p>© <span id="year"></span> Volarjet</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
