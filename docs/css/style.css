@@ -388,3 +388,35 @@ body {
         grid-template-columns: 1fr
     }
 }
+/* -------- LOGO: tamaño consistente -------- */
+.logo {
+  height: 72px;        /* tamaño principal del logo en header */
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* tamaño más pequeño para versiones compactas (footer, etc.) */
+.logo-sm {
+  height: 44px;
+  width: auto;
+}
+
+/* si hay una versión extra grande en el hero */
+.logo-xxl {
+  height: 110px;
+  width: auto;
+}
+
+/* Alineación fina dentro del header */
+.brand { align-items: center; display: inline-flex; gap:10px; }
+
+/* Ajustes responsivos: reducir en pantallas pequeñas */
+@media (max-width: 880px) {
+  .logo { height: 56px; }
+  .logo-sm { height: 36px; }
+  .logo-xxl { height: 82px; }
+}
+
+/* Si quieres forzar tamaño máximo en contenedores muy pequeños */
+.brand img { max-height: 12vh; max-width: 100%; height: auto; }
