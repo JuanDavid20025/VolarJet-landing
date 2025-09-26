@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Volarjet — Reserva tu vuelo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="index.html"><img src="assets/logo.png" alt="Volarjet logo" class="logo">Volarjet</a>
+            <nav class="nav">
+                <a href="reservas.html">Reservas</a>
+                <a href="pagos.html">Pagos</a>
+                <a href="login.html">Iniciar sesión</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Bienvenido a Volarjet</h1>
+                <p>Reserva tus vuelos rápido y seguro. Precios competitivos y atención 24/7.</p>
+                <a class="btn" href="reservas.html">Buscar vuelos</a>
+            </div>
+        </section>
+
+
+        <section class="features container">
+            <article>
+                <h2>Fácil reserva</h2>
+                <p>Encuentra y reserva vuelos en minutos.</p>
+            </article>
+            <article>
+                <h2>Pagos seguros</h2>
+                <p>Paga con tarjeta o medios locales.</p>
+            </article>
+            <article>
+                <h2>Soporte</h2>
+                <p>Atención al cliente 24/7.</p>
+            </article>
+        </section>
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> Volarjet — Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script src="js/firebase-init.js"></script>
+</body>
+
+</html>
