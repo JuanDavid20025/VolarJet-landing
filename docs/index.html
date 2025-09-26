@@ -15,7 +15,6 @@
         <div class="container header-grid">
             <a class="brand" href="index.html">
                 <img src="assets/logo.png" alt="Volarjet" class="logo">
-                
             </a>
 
             <nav class="nav" aria-label="Menú principal">
@@ -72,9 +71,11 @@
                 </div>
 
                 <div class="hero-right">
-                    <div class="card promo">
+                    <!-- Sección de Oferta con imagen -->
+                    <div class="card promo offer-simple">
                         <h3>Oferta del mes</h3>
                         <p>Vuelos ida y vuelta a Cartagena desde $XXX — promociones limitadas.</p>
+                        <img src="assets/oferta.jpg" alt="Oferta Volarjet" class="offer-img">
                         <a class="btn" href="ofertas.html">Ver oferta</a>
                     </div>
 
@@ -177,13 +178,12 @@
             nav.classList.toggle('open');
         });
 
-        // Simulación de búsqueda (evita acción real)
+        // Simulación de búsqueda
         document.getElementById('searchForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const origen = document.getElementById('origen').value || 'Origen';
             const destino = document.getElementById('destino').value || 'Destino';
-            alert('Buscando vuelos: ' + origen + ' → ' + destino + '\\n(esto es una simulación)');
-            // Puedes redirigir a reservas.html con parámetros si quieres
+            alert('Buscando vuelos: ' + origen + ' → ' + destino + '\n(esto es una simulación)');
         });
 
         // Newsletter simulado
@@ -198,4 +198,5 @@
 </body>
 
 </html>
+
 
