@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Modificar vuelo</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../pagina_principal/index.html">Inicio</a>
+            <a href="../estado_vuelo/index.html">Estado de vuelo</a>
+            <a href="../mis_reservas/index.html">Reservas</a>
+            <a href="../servicios/index.html">Servicios</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Modificar vuelo (Ops)</h1>
+        <p class="sub">Busca un vuelo por <strong>ID</strong> o por <strong>ruta + fecha</strong>. Si no existe, puedes
+            crearlo.</p>
+
+        <!-- Buscar -->
+        <section class="card">
+            <div class="grid">
+                <div class="field">
+                    <label>ID de vuelo</label>
+                    <input id="q-id" type="text" placeholder="VJ123" />
+                </div>
+                <div class="field">
+                    <label>Origen</label>
+                    <select id="q-o"></select>
+                </div>
+                <div class="field">
+                    <label>Destino</label>
+                    <select id="q-d"></select>
+                </div>
+                <div class="field">
+                    <label>Fecha</label>
+                    <input id="q-fecha" type="date" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <button id="btn-buscar" class="btn primary">Buscar</button>
+                    <button id="btn-limpiar" class="btn ghost">Limpiar</button>
+                </div>
+                <div class="right mini" id="msg"></div>
+            </div>
+        </section>
+
+        <!-- Editor -->
+        <section id="editor" class="card hidden">
+            <div class="head">
+                <div>
+                    <span class="mini">Vuelo</span>
+                    <div class="idwrap">
+                        <input id="e-id" class="id" type="text" placeholder="VJ123" disabled />
+                        <span class="badge" id="e-status">—</span>
+                    </div>
+                </div>
+                <div class="mini" id="e-upd">Actualizado —</div>
+            </div>
+
+            <div class="grid">
+                <div class="field">
+                    <label>Origen</label>
+                    <select id="e-o"></select>
+                </div>
+                <div class="field">
+                    <label>Destino</label>
+                    <select id="e-d"></select>
+                </div>
+                <div class="field">
+                    <label>Fecha</label>
+                    <input id="e-fecha" type="date" />
+                </div>
+                <div class="field">
+                    <label>Salida</label>
+                    <input id="e-dep" type="time" />
+                </div>
+                <div class="field">
+                    <label>Llegada</label>
+                    <input id="e-arr" type="time" />
+                </div>
+                <div class="field">
+                    <label>Estado</label>
+                    <select id="e-estado">
+                        <option>PROGRAMADO</option>
+                        <option>ABORDANDO</option>
+                        <option>EN_VUELO</option>
+                        <option>RETRASADO</option>
+                        <option>CANCELADO</option>
+                        <option>ATERRIZADO</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="field">
+                    <label>Avión (modelo)</label>
+                    <input id="e-modelo" type="text" placeholder="A320 / B737…" />
+                </div>
+                <div class="field">
+                    <label>Matrícula</label>
+                    <input id="e-matricula" type="text" placeholder="VJ-A320-1" />
+                </div>
+                <div class="field">
+                    <label>Terminal</label>
+                    <input id="e-terminal" type="text" placeholder="T2" />
+                </div>
+                <div class="field">
+                    <label>Puerta</label>
+                    <input id="e-puerta" type="text" placeholder="A5" />
+                </div>
+            </div>
+
+            <!-- Precios y cupos -->
+            <div class="card inner">
+                <h3 class="h3">Cabinas · precios base y cupos</h3>
+                <div class="cab-grid">
+                    <div class="c-item">
+                        <div class="c-title">Economy</div>
+                        <label>Precio base</label>
+                        <input id="p-econ" type="number" min="0" step="1000" placeholder="129900" />
+                        <label>Cupos</label>
+                        <input id="c-econ" type="number" min="0" step="1" placeholder="150" />
+                    </div>
+                    <div class="c-item">
+                        <div class="c-title">Premium</div>
+                        <label>Precio base</label>
+                        <input id="p-prem" type="number" min="0" step="1000" placeholder="189900" />
+                        <label>Cupos</label>
+                        <input id="c-prem" type="number" min="0" step="1" placeholder="24" />
+                    </div>
+                    <div class="c-item">
+                        <div class="c-title">Business</div>
+                        <label>Precio base</label>
+                        <input id="p-biz" type="number" min="0" step="1000" placeholder="329900" />
+                        <label>Cupos</label>
+                        <input id="c-biz" type="number" min="0" step="1" placeholder="12" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Propagación -->
+            <div class="prop">
+                <label class="chk">
+                    <input id="chk-prop" type="checkbox" />
+                    <span>Propagar cambios de <strong>horarios/estado</strong> a reservas afectadas</span>
+                </label>
+                <label class="chk">
+                    <input id="chk-recalc" type="checkbox" />
+                    <span>Recalcular totales de reservas con nuevos <strong>precios base</strong></span>
+                </label>
+                <div class="mini" id="impacto">Reservas impactadas: 0</div>
+            </div>
+
+            <div class="row end">
+                <button id="btn-eliminar" class="btn ghost">Eliminar vuelo</button>
+                <button id="btn-guardar" class="btn primary big">Guardar</button>
+            </div>
+            <div id="save-msg" class="mini"></div>
+        </section>
+
+        <!-- Crear si no existe -->
+        <section id="crear" class="card hidden">
+            <h2 class="h2">Crear nuevo vuelo</h2>
+            <p class="mini">No se encontró un vuelo con esos datos. Puedes crearlo ahora.</p>
+            <div class="grid">
+                <div class="field">
+                    <label>ID (ej. VJ123)</label>
+                    <input id="n-id" type="text" placeholder="VJ123" />
+                </div>
+                <div class="field">
+                    <label>Origen</label>
+                    <select id="n-o"></select>
+                </div>
+                <div class="field">
+                    <label>Destino</label>
+                    <select id="n-d"></select>
+                </div>
+                <div class="field">
+                    <label>Fecha</label>
+                    <input id="n-fecha" type="date" />
+                </div>
+                <div class="field">
+                    <label>Salida</label>
+                    <input id="n-dep" type="time" />
+                </div>
+                <div class="field">
+                    <label>Llegada</label>
+                    <input id="n-arr" type="time" />
+                </div>
+            </div>
+            <div class="row end">
+                <button id="btn-crear" class="btn primary">Crear vuelo</button>
+            </div>
+            <div id="new-msg" class="mini"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../mis_reservas/index.html'">📄<span>Reservas</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../servicios/index.html'">🧰<span>Servicios</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
