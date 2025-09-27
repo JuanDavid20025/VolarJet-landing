@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Compra y reserva de vuelos</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="./buscar_reserva/index.html">Reservar</a>
+            <a href="./estado_vuelo/index.html">Estado</a>
+            <a href="./ofertas/index.html">Ofertas</a>
+            <a href="./checkin_web/index.html">Check-in</a>
+            <a href="./perfil/index.html">Perfil</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="location.href='./perfil/index.html'">Ingresar</button>
+            <button class="btn primary" onclick="location.href='./buscar_reserva/index.html'">Reservar</button>
+        </div>
+    </header>
+
+    <!-- HERO + BUSCADOR RÁPIDO -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <h1 class="h1">Tu próximo vuelo, más fácil y rápido</h1>
+                <p class="sub">Compra y reserva con la mejor experiencia en Colombia. Sin filas, sin enredos.</p>
+                <ul class="bullets">
+                    <li>Tarifas claras y flexibles</li>
+                    <li>Cambios simples y check-in en 1 minuto</li>
+                    <li>Atención 24/7</li>
+                </ul>
+            </div>
+
+            <form id="quick-form" class="card search">
+                <div class="row2">
+                    <div class="field">
+                        <label>Origen</label>
+                        <select id="q-origen"></select>
+                    </div>
+                    <div class="field">
+                        <label>Destino</label>
+                        <select id="q-destino"></select>
+                    </div>
+                </div>
+                <div class="row2">
+                    <div class="field">
+                        <label>Salida</label>
+                        <input id="q-salida" type="date" />
+                    </div>
+                    <div class="field">
+                        <label>Regreso (opcional)</label>
+                        <input id="q-regreso" type="date" />
+                    </div>
+                </div>
+                <div class="row2">
+                    <div class="field small">
+                        <label>Adultos</label>
+                        <input id="q-adt" type="number" min="1" value="1" />
+                    </div>
+                    <div class="field small">
+                        <label>Niños</label>
+                        <input id="q-chd" type="number" min="0" value="0" />
+                    </div>
+                    <div class="field small">
+                        <label>Infantes</label>
+                        <input id="q-inf" type="number" min="0" value="0" />
+                    </div>
+                    <div class="field">
+                        <label>Cabina</label>
+                        <select id="q-cabina">
+                            <option>Economy</option>
+                            <option>Premium Economy</option>
+                            <option>Business</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn primary big" type="submit">Buscar vuelos</button>
+                <p id="q-msg" class="mini"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- DESTINOS POPULARES -->
+    <section class="container section">
+        <h2 class="h2">Destinos populares</h2>
+        <div class="grid-cards">
+            <article class="card city" onclick="prefillAndGo('BOG','CTG')">
+                <div class="city-img ctg"></div>
+                <div class="city-copy">
+                    <strong>Bogotá → Cartagena</strong>
+                    <span class="muted">Sol, mar y murallas</span>
+                </div>
+            </article>
+            <article class="card city" onclick="prefillAndGo('BOG','MDE')">
+                <div class="city-img mde"></div>
+                <div class="city-copy">
+                    <strong>Bogotá → Medellín</strong>
+                    <span class="muted">La ciudad de la eterna primavera</span>
+                </div>
+            </article>
+            <article class="card city" onclick="prefillAndGo('BOG','SMR')">
+                <div class="city-img smr"></div>
+                <div class="city-copy">
+                    <strong>Bogotá → Santa Marta</strong>
+                    <span class="muted">Sierra y Caribe</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- OFERTAS DESTACADAS -->
+    <section class="container section">
+        <div class="section-head">
+            <h2 class="h2">Ofertas destacadas</h2>
+            <button class="btn ghost" onclick="location.href='./ofertas/index.html'">Ver todas</button>
+        </div>
+        <div id="offers" class="grid-cards"></div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="container section">
+        <h2 class="h2">¿Por qué VolarJet?</h2>
+        <div class="perks">
+            <div class="perk">
+                <div class="perk-ico">⚡</div>
+                <div>
+                    <strong>Proceso ultra rápido</strong>
+                    <p class="muted">Reserva completa en menos de 2 minutos.</p>
+                </div>
+            </div>
+            <div class="perk">
+                <div class="perk-ico">🔄</div>
+                <div>
+                    <strong>Cambios simples</strong>
+                    <p class="muted">Gestiona tu reserva sin dolores de cabeza.</p>
+                </div>
+            </div>
+            <div class="perk">
+                <div class="perk-ico">🛡️</div>
+                <div>
+                    <strong>Seguridad y soporte</strong>
+                    <p class="muted">Pagos protegidos y ayuda 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER NAV -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='./buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='./gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='./estado_vuelo/index.html'">🛫<span>Estado</span></button>
+        <button onclick="location.href='./ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='./perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
