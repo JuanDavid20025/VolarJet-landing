@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Eliminar usuario</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+            <a href="../usuarios/index.html">Usuarios</a>
+            <a href="../perfil/index.html">Perfil</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Eliminar usuario</h1>
+        <p class="sub">Busca el usuario por <strong>ID</strong> o <strong>correo</strong>, revísalo y confirma el
+            borrado escribiendo su ID.</p>
+
+        <!-- BUSCADOR -->
+        <section class="card">
+            <div class="grid">
+                <div class="field">
+                    <label>ID de usuario</label>
+                    <input id="q-id" type="text" placeholder="UABCDEFG" />
+                </div>
+                <div class="field">
+                    <label>Correo</label>
+                    <input id="q-mail" type="email" placeholder="usuario@correo.com" />
+                </div>
+            </div>
+            <div class="row">
+                <button id="btn-buscar" class="btn primary">Buscar</button>
+                <span id="msg" class="mini"></span>
+            </div>
+        </section>
+
+        <!-- RESULTADO -->
+        <section id="result" class="card hidden">
+            <div class="u-head">
+                <span class="badge" id="r-id">—</span>
+                <div>
+                    <div><strong id="r-nombre">—</strong> · <span class="role" id="r-rol">—</span></div>
+                    <div class="meta" id="r-meta">—</div>
+                    <div class="meta">Estado: <strong id="r-estado">—</strong></div>
+                </div>
+            </div>
+
+            <div class="danger">
+                ⚠️ Esta acción es permanente. Escribe el <strong>ID</strong> para confirmar.
+            </div>
+
+            <div class="confirm">
+                <input id="confirm-text" type="text" placeholder="Escribe aquí el ID exacto…" />
+                <div class="row end">
+                    <button class="btn ghost" onclick="location.href='../usuarios/index.html'">Cancelar</button>
+                    <button id="btn-delete" class="btn danger">Eliminar definitivamente</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../usuarios/index.html'">👥<span>Usuarios</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+        <button onclick="location.href='../servicios/index.html'">🧰<span>Servicios</span></button>
+        <button onclick="location.href='../ayuda/index.html'">❓<span>Ayuda</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
