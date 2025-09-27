@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Check-in web</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+            <span class="brand"></span>
+        </div>
+        <nav class="nav-links">
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="#">Estado de vuelo</a>
+            <a href="../ofertas/index.html">Ofertas</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+            <button class="btn primary" onclick="window.print()">Imprimir</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Check-in en línea</h1>
+        <p class="sub">Encuentra tu reserva con tu **PNR** y **apellido**, confirma tus datos y descarga tu pase de
+            abordar.</p>
+
+        <!-- PASO 1: Buscar reserva -->
+        <section class="card" id="step-find">
+            <h2 class="h2">1) Buscar tu reserva</h2>
+            <div class="grid">
+                <div class="field">
+                    <label>PNR / Código de reserva</label>
+                    <input id="find-pnr" type="text" placeholder="ABC123" />
+                </div>
+                <div class="field">
+                    <label>Apellido (pasajero titular)</label>
+                    <input id="find-lastname" type="text" placeholder="Pérez" />
+                </div>
+            </div>
+            <div class="row">
+                <button id="btn-buscar" class="btn primary">Buscar</button>
+                <span id="find-msg" class="mini"></span>
+            </div>
+        </section>
+
+        <!-- PASO 2: Confirmar datos APIS -->
+        <section class="card hidden" id="step-apis">
+            <h2 class="h2">2) Datos del pasajero (APIS)</h2>
+            <p class="mini">Estos datos son requeridos para seguridad y abordaje.</p>
+            <div class="grid">
+                <div class="field">
+                    <label>Nombres</label>
+                    <input id="apis-nombres" type="text" />
+                </div>
+                <div class="field">
+                    <label>Apellidos</label>
+                    <input id="apis-apellidos" type="text" />
+                </div>
+                <div class="field">
+                    <label>Tipo documento</label>
+                    <select id="apis-tipo">
+                        <option>CC</option>
+                        <option>TI</option>
+                        <option>CE</option>
+                        <option>PAS</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Número documento</label>
+                    <input id="apis-doc" type="text" maxlength="20" />
+                </div>
+                <div class="field">
+                    <label>Fecha nacimiento</label>
+                    <input id="apis-nac" type="date" />
+                </div>
+                <div class="field">
+                    <label>Nacionalidad</label>
+                    <input id="apis-nacn" type="text" placeholder="Colombia" />
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="field">
+                    <label>Contacto de emergencia (nombre)</label>
+                    <input id="emg-nombre" type="text" />
+                </div>
+                <div class="field">
+                    <label>Contacto de emergencia (teléfono)</label>
+                    <input id="emg-tel" type="tel" placeholder="+57 300 000 0000" />
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="inline">
+                    <input id="chk-declaracion" type="checkbox" />
+                    Declaro que mi equipaje no contiene artículos peligrosos y acepto las reglas de transporte.
+                </label>
+            </div>
+
+            <div class="row">
+                <button id="btn-cont-apis" class="btn primary" disabled>Continuar</button>
+            </div>
+        </section>
+
+        <!-- PASO 3: Selección / confirmación de asiento -->
+        <section class="card hidden" id="step-seat">
+            <h2 class="h2">3) Tu asiento</h2>
+            <p class="mini">Puedes mantener el asiento seleccionado o elegir uno disponible.</p>
+            <div class="seat-wrap">
+                <div id="seat-current" class="badge">Actual: —</div>
+                <select id="seat-chooser"></select>
+                <button id="btn-guardar-seat" class="btn ghost">Guardar asiento</button>
+            </div>
+        </section>
+
+        <!-- PASO 4: Pase de abordar -->
+        <section class="card hidden" id="step-bp">
+            <h2 class="h2">4) Pase de abordar</h2>
+            <div class="bp">
+                <div class="bp-head">
+                    <img src="../img/logo.png" class="logo logo-small" alt="VolarJet" />
+                    <span>Boarding Pass</span>
+                </div>
+                <div class="bp-grid">
+                    <div>
+                        <div class="mini">Pasajero</div>
+                        <div id="bp-nombre" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Vuelo</div>
+                        <div id="bp-vuelo" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Desde</div>
+                        <div id="bp-origen" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Hacia</div>
+                        <div id="bp-dest" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Salida</div>
+                        <div id="bp-salida" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Asiento</div>
+                        <div id="bp-seat" class="bp-strong">—</div>
+                    </div>
+                    <div class="bp-wide">
+                        <div class="mini">PNR</div>
+                        <div id="bp-pnr" class="bp-strong">—</div>
+                    </div>
+                </div>
+                <div class="bp-barcode"></div>
+                <div class="row">
+                    <button class="btn primary" onclick="window.print()">Imprimir / Guardar PDF</button>
+                    <button class="btn ghost" id="btn-finalizar">Finalizar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Inicio</span></button>
+        <button>✈️<span>Tus vuelos</span></button>
+        <button>🛄<span>Check-In</span></button>
+        <button>👤<span>Tu perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
