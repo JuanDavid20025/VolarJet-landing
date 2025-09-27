@@ -1,0 +1,360 @@
+:root {
+    --brand: #0ddb88;
+    --dark: #0B1530;
+    --text: #0B1530;
+    --card: #fff;
+    --muted: #6b7280;
+    --ring: rgba(13, 219, 136, .45);
+    --shadow: 0 10px 30px rgba(0, 0, 0, .15);
+    --radius: 16px;
+
+    --seat-size: 38px;
+    --seat-gap: 10px;
+    --seat-radius: 10px;
+
+    --seat-avail: #e5f8ef;
+    --seat-selected: #ffe79a;
+    --seat-pref: #cfefff;
+    --seat-extra: #c7fff0;
+    --seat-occupied: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+    color: #fff
+}
+
+.bg {
+    background: linear-gradient(180deg, #0B1530 0%, #0B1530 55%, #0ddb88 120%);
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: rgba(11, 21, 48, .8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.logo {
+    width: 132px;
+    height: auto;
+    object-fit: contain
+}
+
+.brand {
+    font-weight: 700;
+    letter-spacing: .06em
+}
+
+.nav-links {
+    display: none;
+    gap: 18px;
+    opacity: .9
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none
+}
+
+.nav-links a:hover {
+    opacity: 1
+}
+
+.nav-cta {
+    display: flex;
+    gap: 10px
+}
+
+@media (min-width:900px) {
+    .nav-links {
+        display: flex
+    }
+}
+
+/* BOTONES */
+.btn {
+    border: none;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer
+}
+
+.btn.primary {
+    background: var(--brand);
+    color: var(--dark)
+}
+
+.btn.primary:hover {
+    filter: brightness(1.05)
+}
+
+.btn.ghost {
+    background: rgba(255, 255, 255, .1);
+    color: #fff
+}
+
+.btn.ghost:hover {
+    background: rgba(255, 255, 255, .18)
+}
+
+.btn.big {
+    padding: 14px 18px;
+    width: 100%;
+    font-size: 16px
+}
+
+/* CONTENEDORES */
+.container {
+    width: min(1200px, 92%);
+    margin: 0 auto
+}
+
+.section-top {
+    padding: 36px 0 0
+}
+
+.h1 {
+    font-size: clamp(26px, 3vw, 36px);
+    margin: 0 0 6px;
+    font-weight: 800
+}
+
+.h2 {
+    color: var(--text);
+    margin: 0 0 8px
+}
+
+.sub {
+    opacity: .9;
+    margin: 0 0 16px
+}
+
+.card {
+    background: var(--card);
+    color: var(--text);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid #e5e7eb;
+}
+
+.layout {
+    display: grid;
+    gap: 16px;
+    align-items: start;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* CABINA */
+.cabin .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: #374151;
+    font-size: 14px;
+}
+
+.cabin .legend .seat {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    margin-right: 6px;
+    vertical-align: middle;
+    border: 1px solid #d1d5db;
+}
+
+.cabin .legend .available {
+    background: var(--seat-avail);
+}
+
+.cabin .legend .selected {
+    background: var(--seat-selected);
+}
+
+.cabin .legend .preferred {
+    background: var(--seat-pref);
+}
+
+.cabin .legend .extra {
+    background: var(--seat-extra);
+}
+
+.cabin .legend .occupied {
+    background: var(--seat-occupied);
+}
+
+.aircraft {
+    width: 100%;
+    overflow: auto;
+    padding: 12px;
+    background: linear-gradient(180deg, #f8fafc, #ffffff);
+    border-radius: 14px;
+    border: 1px dashed #e5e7eb;
+}
+
+.row-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, var(--seat-size)) var(--seat-gap) repeat(3, var(--seat-size));
+    gap: var(--seat-gap);
+    align-items: center;
+    justify-content: center;
+}
+
+.seat {
+    width: var(--seat-size);
+    height: var(--seat-size);
+    border-radius: var(--seat-radius);
+    border: 1px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #0B1530;
+    cursor: pointer;
+    user-select: none;
+    background: var(--seat-avail);
+}
+
+.seat:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .06);
+}
+
+.seat.occupied {
+    background: var(--seat-occupied);
+    color: #9ca3af;
+    cursor: not-allowed
+}
+
+.seat.preferred {
+    background: var(--seat-pref)
+}
+
+.seat.extra {
+    background: var(--seat-extra)
+}
+
+.seat.selected {
+    background: var(--seat-selected);
+    border-color: #f59e0b
+}
+
+/* SIDEBAR */
+.sidebar .box {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #fff
+}
+
+.sidebar .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6px 0
+}
+
+.sidebar .list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    color: #374151;
+    font-size: 14px
+}
+
+.sidebar .list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dashed #e5e7eb
+}
+
+.sidebar .list li:last-child {
+    border-bottom: none
+}
+
+.sidebar .total span {
+    font-weight: 600
+}
+
+.mini {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 8px
+}
+
+/* FOOTER */
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--dark);
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+}
+
+.bottom-nav button {
+    padding: 10px 0;
+    background: none;
+    border: none;
+    color: #fff;
+    opacity: .9
+}
+
+.bottom-nav button:hover {
+    opacity: 1
+}
+
+.bottom-nav span {
+    display: block;
+    font-size: 12px
+}
