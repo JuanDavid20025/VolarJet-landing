@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Facturación electrónica</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="../estado_vuelo/index.html">Estado</a>
+            <a href="../perfil/index.html">Perfil</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn primary" onclick="location.href='../buscar_reserva/index.html'">Comprar</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Facturación electrónica</h1>
+        <p class="sub">Descarga tu factura ingresando el <strong>PNR</strong> y el <strong>correo</strong> usado en la
+            compra.</p>
+
+        <!-- BUSCADOR -->
+        <section class="card">
+            <div class="grid">
+                <div class="field">
+                    <label>PNR / Código de reserva</label>
+                    <input id="q-pnr" type="text" placeholder="ABC123" />
+                </div>
+                <div class="field">
+                    <label>Correo de la compra</label>
+                    <input id="q-mail" type="email" placeholder="tucorreo@ejemplo.com" />
+                </div>
+            </div>
+            <div class="row">
+                <button id="btn-buscar" class="btn primary">Buscar factura</button>
+                <span id="msg" class="mini"></span>
+            </div>
+        </section>
+
+        <!-- RESULTADO -->
+        <section id="factura-wrap" class="card hidden">
+            <div class="invoice-head">
+                <div class="left">
+                    <img src="../img/logo.png" alt="VolarJet" class="logo" />
+                    <div class="meta mini">NIT 900.000.000-1 · Régimen Común</div>
+                </div>
+                <div class="right">
+                    <div class="title">Factura electrónica</div>
+                    <div class="mini">Consecutivo: <strong id="inv-nro">—</strong></div>
+                    <div class="mini">Fecha: <strong id="inv-fecha">—</strong></div>
+                </div>
+            </div>
+
+            <div class="grid two">
+                <div class="box">
+                    <h3 class="h3">Receptor</h3>
+                    <div class="row"><span>Nombre</span><strong id="cli-nom">—</strong></div>
+                    <div class="row"><span>Correo</span><strong id="cli-mail">—</strong></div>
+                    <div class="row"><span>Documento</span><strong id="cli-doc">—</strong></div>
+                </div>
+                <div class="box">
+                    <h3 class="h3">Datos de la compra</h3>
+                    <div class="row"><span>PNR</span><strong id="inv-pnr">—</strong></div>
+                    <div class="row"><span>Vuelo</span><strong id="inv-vuelo">—</strong></div>
+                    <div class="row"><span>Ruta</span><strong id="inv-ruta">—</strong></div>
+                    <div class="row"><span>Fecha</span><strong id="inv-salida">—</strong></div>
+                </div>
+            </div>
+
+            <div class="table">
+                <div class="thead">
+                    <div>Descripción</div>
+                    <div class="num">Cant.</div>
+                    <div class="num">Vlr. unit.</div>
+                    <div class="num">Subtotal</div>
+                </div>
+                <div id="inv-items" class="tbody"></div>
+                <div class="tfoot">
+                    <div></div>
+                    <div></div>
+                    <div class="label">Base</div>
+                    <div class="num" id="sum-base">$0</div>
+                    <div></div>
+                    <div></div>
+                    <div class="label">IVA 19%</div>
+                    <div class="num" id="sum-iva">$0</div>
+                    <div></div>
+                    <div></div>
+                    <div class="label total">Total</div>
+                    <div class="num total" id="sum-total">$0</div>
+                </div>
+            </div>
+
+            <div class="row end">
+                <button class="btn ghost" id="btn-mail">Enviar por correo</button>
+                <button class="btn primary" onclick="window.print()">Imprimir / Guardar PDF</button>
+            </div>
+
+            <p class="mini note">* Documento de demostración. Cuando conectes tu API de facturación, reemplaza los datos
+                de localStorage por los reales y agrega el CUFE.</p>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='../estado_vuelo/index.html'">🛫<span>Estado</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
