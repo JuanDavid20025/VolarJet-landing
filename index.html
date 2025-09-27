@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Pagos</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../pagina_principal/index.html">Inicio</a>
+            <a href="../mis_reservas/index.html">Mis reservas</a>
+            <a href="../servicios/index.html">Servicios</a>
+            <a href="../contacto/index.html">Contacto</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Finaliza tu pago</h1>
+        <p class="sub">Revisa el resumen y elige tu método de pago seguro.</p>
+
+        <!-- AVISO si no hay orden -->
+        <section id="no-orden" class="card hidden">
+            <h2 class="h2">No encontramos una orden activa</h2>
+            <p>Primero crea una reserva para poder pagar.</p>
+            <button class="btn primary" onclick="location.href='../nueva_reserva/index.html'">Crear nueva
+                reserva</button>
+        </section>
+
+        <!-- CHECKOUT -->
+        <section id="checkout" class="checkout">
+            <div class="left">
+                <!-- Métodos -->
+                <div class="card">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="card">Tarjeta</button>
+                        <button class="tab" data-tab="pse">PSE / Transferencia</button>
+                        <button class="tab" data-tab="wallet">Billetera</button>
+                    </div>
+
+                    <!-- Tarjeta -->
+                    <form id="form-card" class="form show" autocomplete="off">
+                        <div class="grid">
+                            <div class="field">
+                                <label>Nombre en la tarjeta</label>
+                                <input id="c-name" type="text" placeholder="Como aparece en la tarjeta" />
+                            </div>
+                            <div class="field">
+                                <label>Número de tarjeta</label>
+                                <input id="c-num" type="text" inputmode="numeric" placeholder="#### #### #### ####"
+                                    maxlength="19" />
+                            </div>
+                            <div class="field small">
+                                <label>Vencimiento</label>
+                                <input id="c-exp" type="text" inputmode="numeric" placeholder="MM/AA" maxlength="5" />
+                            </div>
+                            <div class="field small">
+                                <label>CVV</label>
+                                <input id="c-cvv" type="password" inputmode="numeric" placeholder="***" maxlength="4" />
+                            </div>
+                            <div class="field">
+                                <label>Cuotas</label>
+                                <select id="c-cuotas">
+                                    <option value="1">1 cuota (sin interés)</option>
+                                    <option value="3">3 cuotas (sin interés)</option>
+                                    <option value="6">6 cuotas</option>
+                                    <option value="12">12 cuotas</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label class="chk">
+                            <input id="c-save" type="checkbox" />
+                            <span>Recordar última tarjeta (solo los últimos 4 dígitos)</span>
+                        </label>
+                        <div id="card-msg" class="mini error"></div>
+                    </form>
+
+                    <!-- PSE -->
+                    <form id="form-pse" class="form">
+                        <div class="grid">
+                            <div class="field">
+                                <label>Banco</label>
+                                <select id="pse-bank">
+                                    <option value="">Selecciona tu banco</option>
+                                    <option>Bancolombia</option>
+                                    <option>Davivienda</option>
+                                    <option>BBVA</option>
+                                    <option>Banco de Bogotá</option>
+                                    <option>Nequi</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Documento</label>
+                                <input id="pse-doc" type="text" placeholder="CC 1234567890" />
+                            </div>
+                        </div>
+                        <div class="mini">Te llevaremos a tu banco para autorizar el pago (demo simulado).</div>
+                        <div id="pse-msg" class="mini error"></div>
+                    </form>
+
+                    <!-- Wallet -->
+                    <form id="form-wallet" class="form">
+                        <div class="grid">
+                            <div class="field">
+                                <label>Proveedor</label>
+                                <select id="w-prov">
+                                    <option>Nequi</option>
+                                    <option>Daviplata</option>
+                                    <option>Movii</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Número de celular</label>
+                                <input id="w-phone" type="tel" placeholder="+57 3xx xxx xxxx" />
+                            </div>
+                        </div>
+                        <div class="mini">Recibirás una notificación para aprobar tu pago en la app (demo).</div>
+                        <div id="w-msg" class="mini error"></div>
+                    </form>
+
+                    <label class="chk terms">
+                        <input id="terms" type="checkbox" />
+                        <span>Acepto los <a href="../legal/terminos.html" target="_blank">Términos</a> y la <a
+                                href="../legal/privacidad.html" target="_blank">Política de privacidad</a>.</span>
+                    </label>
+
+                    <div class="row end">
+                        <button id="btn-pagar" class="btn primary big">Pagar ahora</button>
+                    </div>
+                    <div id="pay-msg" class="mini"></div>
+                </div>
+
+                <!-- Ayuda -->
+                <div class="card help">
+                    <div class="pill">🔒 Pago seguro</div>
+                    <div class="mini">Tus datos se procesan de forma segura. En demo no se envían a ningún procesador
+                        real.</div>
+                </div>
+            </div>
+
+            <!-- Resumen -->
+            <aside class="card summary" id="summary">
+                <div class="head">
+                    <div><strong>Resumen de pago</strong></div>
+                    <div class="mini muted"><span id="hold">10:00</span> para completar</div>
+                </div>
+                <div id="reserva-info" class="reserva">—</div>
+                <div class="prices">
+                    <div><span>Subtotal</span><strong id="p-sub">$0</strong></div>
+                    <div><span>IVA (19%)</span><strong id="p-iva">$0</strong></div>
+                    <div class="disc hidden" id="p-disc-row"><span>Descuento cupón</span><strong
+                            id="p-disc">-$0</strong></div>
+                    <div class="total"><span>Total a pagar</span><strong id="p-total">$0</strong></div>
+                </div>
+                <div class="cupon">
+                    <input id="cupon" type="text" placeholder="Código de descuento" />
+                    <button id="aplicar-cupon" class="btn ghost" type="button">Aplicar</button>
+                    <div id="cupon-msg" class="mini"></div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Éxito -->
+        <section id="ok" class="card success hidden">
+            <h2 class="h2">¡Pago aprobado!</h2>
+            <p>PNR <span class="badge" id="ok-pnr">—</span> · Transacción <span class="badge"
+                    id="ok-id">PAY-00000</span> · Autorización <span class="badge" id="ok-auth">—</span></p>
+            <p class="mini">Te enviamos la confirmación a tu correo (demo).</p>
+            <div class="row">
+                <button class="btn ghost" onclick="location.href='../mis_reservas/index.html'">Ver mis reservas</button>
+                <button class="btn primary" onclick="location.href='../facturacion/index.html'">Descargar
+                    factura</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../mis_reservas/index.html'">📄<span>Reservas</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../servicios/index.html'">🧰<span>Servicios</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
