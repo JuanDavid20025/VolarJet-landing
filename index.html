@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Destinos</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../pagina_principal/index.html">Inicio</a>
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../ofertas/index.html">Ofertas</a>
+            <a href="../servicios/index.html">Servicios</a>
+            <a href="../contacto/index.html">Contacto</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <div class="head">
+            <h1 class="h1">Explora destinos</h1>
+            <p class="sub">Encuentra tu próxima ciudad favorita en Colombia.</p>
+        </div>
+
+        <!-- Filtros -->
+        <section class="card filters">
+            <div class="row wrap">
+                <div class="field grow">
+                    <label>Buscar</label>
+                    <input id="q" type="search" placeholder="Ciudad o código IATA (ej. CTG, MDE)" />
+                </div>
+                <div class="field">
+                    <label>Región</label>
+                    <select id="region">
+                        <option value="">Todas</option>
+                        <option>Caribe</option>
+                        <option>Andina</option>
+                        <option>Pacífico</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Ordenar por</label>
+                    <select id="orden">
+                        <option value="popular">Popularidad</option>
+                        <option value="precioAsc">Precio (menor a mayor)</option>
+                        <option value="precioDesc">Precio (mayor a menor)</option>
+                        <option value="nuevo">Novedades</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="chips" id="chips">
+                <button class="chip" data-tag="Playa">Playa</button>
+                <button class="chip" data-tag="Ciudad">Ciudad</button>
+                <button class="chip" data-tag="Naturaleza">Naturaleza</button>
+                <button class="chip" data-tag="Cultura">Cultura</button>
+                <button class="chip" data-tag="Aventura">Aventura</button>
+            </div>
+
+            <div class="row price-row">
+                <div class="field grow">
+                    <label>Precio máximo (desde)</label>
+                    <input id="precio" type="range" min="80000" max="400000" step="10000" value="400000" />
+                    <div class="mini">Hasta <strong id="precio-val">$400.000</strong></div>
+                </div>
+                <label class="chk">
+                    <input id="solo-fav" type="checkbox" />
+                    <span>Solo favoritos ⭐</span>
+                </label>
+                <button id="limpiar" class="btn ghost">Limpiar</button>
+            </div>
+
+            <div class="mini muted" id="resumen">—</div>
+        </section>
+
+        <!-- Grid -->
+        <section id="grid" class="grid"></section>
+
+        <!-- Empty -->
+        <section id="empty" class="card empty hidden">
+            <div>😕 No encontramos destinos con esos filtros.</div>
+            <button class="btn primary" id="quitar-filtros">Quitar filtros</button>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../mis_reservas/index.html'">📄<span>Reservas</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../servicios/index.html'">🧰<span>Servicios</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
