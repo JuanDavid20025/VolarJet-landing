@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Confirmación de reserva</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+            <span class="brand"></span>
+        </div>
+        <nav class="nav-links">
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="#">Check-in</a>
+            <a href="#">Gestionar</a>
+            <a href="#">Estado de vuelo</a>
+            <a href="#">Ofertas</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="location.href='../buscar_reserva/index.html'">Nueva búsqueda</button>
+            <button class="btn primary" onclick="window.print()">Imprimir / PDF</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">¡Reserva confirmada!</h1>
+        <p class="sub">Te enviamos el itinerario al correo. Guarda tu PNR para futuras gestiones.</p>
+
+        <section class="grid">
+            <!-- Detalle reserva -->
+            <div class="card">
+                <div class="pnr-box">
+                    <div>
+                        <div class="mini">Código de reserva (PNR)</div>
+                        <div id="pnr" class="pnr">— — — — —</div>
+                    </div>
+                    <div class="barcode" id="barcode" aria-hidden="true"></div>
+                </div>
+
+                <div id="vuelo" class="box"></div>
+
+                <div class="box">
+                    <h3 class="h3">Pasajeros y asientos</h3>
+                    <ul id="listaPax" class="list"></ul>
+                </div>
+
+                <div class="box">
+                    <h3 class="h3">Pago</h3>
+                    <div class="row"><span>Total pagado</span><strong id="total">$0</strong></div>
+                    <div class="row"><span>Detalle</span><span id="detallePago" class="muted"></span></div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn primary" id="btn-checkin">Hacer check-in</button>
+                    <button class="btn ghost" id="btn-gestionar">Cambios y cancelaciones</button>
+                </div>
+            </div>
+
+            <!-- Pase de abordar (preview) -->
+            <aside class="card boarding">
+                <div class="boarding-head">
+                    <img src="../img/logo.png" class="logo logo-small" alt="VolarJet" />
+                    <span>Boarding Pass</span>
+                </div>
+                <div class="boarding-grid">
+                    <div>
+                        <div class="mini">Pasajero</div>
+                        <div id="bp-nombre" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Vuelo</div>
+                        <div id="bp-vuelo" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Desde</div>
+                        <div id="bp-origen" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Hacia</div>
+                        <div id="bp-dest" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Salida</div>
+                        <div id="bp-salida" class="bp-strong">—</div>
+                    </div>
+                    <div>
+                        <div class="mini">Asiento</div>
+                        <div id="bp-seat" class="bp-strong">—</div>
+                    </div>
+                    <div class="bp-wide">
+                        <div class="mini">PNR</div>
+                        <div id="bp-pnr" class="bp-strong">—</div>
+                    </div>
+                </div>
+                <div class="bp-barcode" id="bp-code" aria-hidden="true"></div>
+                <button class="btn ghost small" onclick="window.print()">Descargar pase (PDF)</button>
+            </aside>
+        </section>
+
+        <section class="card info">
+            <h3 class="h3">Políticas clave</h3>
+            <ul class="bullets">
+                <li>Check-in disponible desde 48 horas antes de la salida.</li>
+                <li>Cambios y reembolsos según la tarifa adquirida.</li>
+                <li>Presenta documento de identidad vigente para abordar.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Inicio</span></button>
+        <button>✈️<span>Tus vuelos</span></button>
+        <button>🎁<span>Ofertas</span></button>
+        <button>🛄<span>Check-In</span></button>
+        <button>👤<span>Tu perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
