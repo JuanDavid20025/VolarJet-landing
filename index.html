@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Iniciar sesión</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+            <a href="../ofertas/index.html">Ofertas</a>
+            <a href="../servicios/index.html">Servicios</a>
+            <a href="../ayuda/index.html">Ayuda</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="location.href='../buscar_reserva/index.html'">Reservar</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <section class="auth card glass">
+            <div class="auth-left">
+                <div class="overline" id="timeofday">Hola</div>
+                <h1 class="h1">Inicia sesión</h1>
+                <p class="sub">Continúa tu compra, gestiona reservas y guarda tus datos.</p>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" data-tab="pass">Con contraseña</button>
+                    <button class="tab" data-tab="code">Con código</button>
+                </div>
+
+                <!-- Form contraseña -->
+                <form id="form-pass" class="form show" autocomplete="on">
+                    <label>Email</label>
+                    <input id="email" type="email" placeholder="tucorreo@ejemplo.com" required />
+
+                    <div class="passwrap">
+                        <label>Contraseña</label>
+                        <div class="passbox">
+                            <input id="password" type="password" placeholder="••••••••" required />
+                            <button class="eye" type="button" id="toggle-pass"
+                                aria-label="Mostrar u ocultar contraseña">👁️</button>
+                        </div>
+                        <div class="mini muted" id="caps-msg" style="display:none">Bloq Mayús activado</div>
+                    </div>
+
+                    <div class="row">
+                        <label class="chk">
+                            <input id="remember" type="checkbox" /> <span>Recordarme</span>
+                        </label>
+                        <button class="link" type="button" id="go-code">¿Olvidaste tu contraseña?</button>
+                    </div>
+
+                    <button class="btn primary big" type="submit">Ingresar</button>
+                    <div id="msg-pass" class="mini error"></div>
+                </form>
+
+                <!-- Form código -->
+                <form id="form-code" class="form" autocomplete="off">
+                    <label>Email</label>
+                    <input id="email-code" type="email" placeholder="tucorreo@ejemplo.com" />
+
+                    <div class="row">
+                        <button class="btn ghost" id="send-code" type="button">Enviar código</button>
+                        <span id="code-status" class="mini"></span>
+                    </div>
+
+                    <label>Código de 6 dígitos</label>
+                    <input id="otp" inputmode="numeric" maxlength="6" placeholder="123456" />
+
+                    <button class="btn primary big" type="submit">Ingresar con código</button>
+                    <div id="msg-code" class="mini error"></div>
+                </form>
+
+                <p class="mini note">Demo: si el usuario no tiene contraseña guardada, puedes usar
+                    <strong>123456</strong>.</p>
+            </div>
+
+            <!-- Arte / lado derecho -->
+            <div class="auth-art" aria-hidden="true">
+                <div class="orb orb-a"></div>
+                <div class="orb orb-b"></div>
+                <div class="plane">✈️</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER NAV (opcional) -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../mis_reservas/index.html'">📄<span>Reservas</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../servicios/index.html'">🧰<span>Servicios</span></button>
+        <button onclick="location.href='../ayuda/index.html'">❓<span>Ayuda</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
