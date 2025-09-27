@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Mis reservas</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR (solo logo, sin brand) -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="../estado_vuelo/index.html">Estado</a>
+            <a href="../ofertas/index.html">Ofertas</a>
+            <a href="../perfil/index.html">Perfil</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn primary" onclick="location.href='../buscar_reserva/index.html'">Nueva reserva</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Mis reservas</h1>
+        <p class="sub">Consulta y gestiona tus reservas. Puedes filtrar por estado, buscar por PNR o destino, y ordenar.
+        </p>
+
+        <!-- Controles -->
+        <section class="card controls">
+            <div class="toolbar">
+                <div class="field">
+                    <label>Buscar</label>
+                    <input id="q" type="text" placeholder="PNR, ciudad, número de vuelo..." />
+                </div>
+                <div class="field">
+                    <label>Estado</label>
+                    <select id="f-estado">
+                        <option value="">Todas</option>
+                        <option value="ACTIVA">Activas</option>
+                        <option value="CANCELADA">Canceladas</option>
+                        <option value="VOLADA">Voladas</option>
+                        <option value="PROXIMA">Próximas (auto)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Ordenar por</label>
+                    <select id="f-sort">
+                        <option value="fecha-desc">Fecha (más próxima)</option>
+                        <option value="fecha-asc">Fecha (más lejana)</option>
+                        <option value="creada-desc">Recientes</option>
+                        <option value="precio-desc">Precio (alto→bajo)</option>
+                        <option value="precio-asc">Precio (bajo→alto)</option>
+                    </select>
+                </div>
+                <div class="actions">
+                    <button id="btn-limpiar" class="btn ghost">Limpiar</button>
+                    <!-- Botón demo para importar la última orden al listado -->
+                    <button id="btn-importar" class="btn">Importar última compra</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista -->
+        <section id="list" class="results"></section>
+        <p id="empty" class="hint">No tienes reservas aún.</p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='../estado_vuelo/index.html'">🛫<span>Estado</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
