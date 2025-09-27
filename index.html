@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Centro de ayuda</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="../estado_vuelo/index.html">Estado</a>
+            <a href="../ofertas/index.html">Ofertas</a>
+            <a href="../servicios/index.html">Servicios</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn primary" onclick="location.href='../buscar_reserva/index.html'">Comprar</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Centro de ayuda</h1>
+        <p class="sub">Encuentra respuestas rápidas sobre tu viaje con VolarJet.</p>
+
+        <!-- BUSCADOR -->
+        <section class="card">
+            <div class="searchbar">
+                <input id="q" type="text" placeholder="Escribe una pregunta: cambio de vuelo, equipaje, mascotas..." />
+                <button id="btn-search" class="btn primary">Buscar</button>
+            </div>
+            <div class="chips">
+                <button class="chip chip-active" data-cat="">Todo</button>
+                <button class="chip" data-cat="compras">Compras y pagos</button>
+                <button class="chip" data-cat="equipaje">Equipaje</button>
+                <button class="chip" data-cat="cambios">Cambios y cancelaciones</button>
+                <button class="chip" data-cat="checkin">Check-in y abordaje</button>
+                <button class="chip" data-cat="mascotas">Mascotas</button>
+                <button class="chip" data-cat="facturacion">Facturación</button>
+            </div>
+        </section>
+
+        <!-- CATEGORÍAS DESTACADAS -->
+        <section class="grid-cats">
+            <article class="card cat" data-cat="compras">
+                <div class="ico">💳</div>
+                <div>
+                    <strong>Compras y pagos</strong>
+                    <p class="mini">Medios de pago, promociones y reembolsos.</p>
+                </div>
+            </article>
+            <article class="card cat" data-cat="equipaje">
+                <div class="ico">🧳</div>
+                <div>
+                    <strong>Equipaje</strong>
+                    <p class="mini">Medidas, costos y artículos restringidos.</p>
+                </div>
+            </article>
+            <article class="card cat" data-cat="cambios">
+                <div class="ico">🔄</div>
+                <div>
+                    <strong>Cambios y cancelaciones</strong>
+                    <p class="mini">Políticas por tarifa y ventanas sin multa.</p>
+                </div>
+            </article>
+            <article class="card cat" data-cat="checkin">
+                <div class="ico">🛄</div>
+                <div>
+                    <strong>Check-in y abordaje</strong>
+                    <p class="mini">APIS, pase de abordar y puertas.</p>
+                </div>
+            </article>
+            <article class="card cat" data-cat="mascotas">
+                <div class="ico">🐾</div>
+                <div>
+                    <strong>Mascotas</strong>
+                    <p class="mini">Requisitos y cupos.</p>
+                </div>
+            </article>
+            <article class="card cat" data-cat="facturacion">
+                <div class="ico">🧾</div>
+                <div>
+                    <strong>Facturación</strong>
+                    <p class="mini">Factura electrónica y CUFE.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section class="card">
+            <div class="results-head">
+                <h2 class="h2">Artículos</h2>
+                <div id="count" class="mini">0 resultados</div>
+            </div>
+            <div id="results" class="results"></div>
+            <p id="empty" class="hint">No encontramos artículos para tu búsqueda.</p>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='../estado_vuelo/index.html'">🛫<span>Estado</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <!-- MODAL ARTÍCULO -->
+    <dialog id="dlg" class="modal">
+        <article class="modal-card">
+            <header class="modal-head">
+                <h3 id="dlg-title">Artículo</h3>
+                <button class="btn ghost" onclick="dlg.close()">Cerrar</button>
+            </header>
+            <div id="dlg-body" class="modal-body"></div>
+            <footer class="modal-foot">
+                <button class="btn" onclick="window.print()">Imprimir / PDF</button>
+                <button class="btn primary" id="dlg-cta">Acción sugerida</button>
+            </footer>
+        </article>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
