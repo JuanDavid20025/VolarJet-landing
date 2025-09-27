@@ -158,3 +158,4 @@ function seleccionarVuelo(vuelo){
 }
 
 init();
+
