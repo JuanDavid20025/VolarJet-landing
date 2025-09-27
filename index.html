@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Ofertas</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+         </div>
+        <nav class="nav-links">
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../checkin_web/index.html">Check-in</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="../estado_vuelo/index.html">Estado</a>
+            <a href="#">Ofertas</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+            <button class="btn primary" onclick="location.href='../buscar_reserva/index.html'">Buscar vuelo</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Ofertas y promociones</h1>
+        <p class="sub">Descubre descuentos por tiempo limitado y tarifas especiales por ruta.</p>
+
+        <!-- Banner -->
+        <section class="banner">
+            <div class="b-copy">
+                <div class="b-title">Semana Verde VolarJet</div>
+                <div class="b-sub">Hasta 35% OFF en rutas seleccionadas · Código: <strong>VJVERDE</strong></div>
+                <button class="btn primary" onclick="aplicarCupon('VJVERDE')">Aplicar cupón</button>
+            </div>
+            <div class="b-art" aria-hidden="true">✈️</div>
+        </section>
+
+        <!-- Filtros / Orden -->
+        <section class="card controls">
+            <div class="row wrap">
+                <div class="field">
+                    <label>Origen</label>
+                    <select id="f-origen"></select>
+                </div>
+                <div class="field">
+                    <label>Destino</label>
+                    <select id="f-dest"></select>
+                </div>
+                <div class="field">
+                    <label>Tipo de oferta</label>
+                    <select id="f-tipo">
+                        <option value="">Todas</option>
+                        <option value="promo">Promo</option>
+                        <option value="last">Last minute</option>
+                        <option value="bank">Bancos</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Ordenar por</label>
+                    <select id="f-sort">
+                        <option value="mejor">Mejor descuento</option>
+                        <option value="precio">Precio más bajo</option>
+                        <option value="reciente">Más recientes</option>
+                    </select>
+                </div>
+                <button id="btn-limpiar" class="btn ghost">Limpiar</button>
+            </div>
+        </section>
+
+        <!-- Resultados -->
+        <section class="grid-cards" id="cards"></section>
+        <p id="hint" class="hint">No hay ofertas para los filtros seleccionados.</p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Inicio</span></button>
+        <button onclick="location.href='../gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='../estado_vuelo/index.html'">🛫<span>Estado</span></button>
+        <button>🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../checkin_web/index.html'">🛄<span>Check-in</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
