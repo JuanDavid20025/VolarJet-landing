@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Extras y servicios</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+            <span class="brand"></span>
+        </div>
+        <nav class="nav-links">
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="#">Check-in</a>
+            <a href="#">Gestionar</a>
+            <a href="#">Estado de vuelo</a>
+            <a href="#">Ofertas</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+            <button class="btn primary" id="btn-ayuda">Ayuda</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Añade extras a tu viaje</h1>
+        <p id="resumen" class="sub"></p>
+
+        <div class="layout">
+            <!-- IZQUIERDA: cartas de extras -->
+            <section class="column">
+                <!-- Equipaje -->
+                <div class="card">
+                    <h2 class="h2">Equipaje</h2>
+                    <p class="mini">Precios por trayecto y por pasajero (ADT/CHD). Infantes no pagan equipaje adicional.
+                    </p>
+                    <div class="grid3">
+                        <div class="opt">
+                            <div class="opt-head">
+                                <div class="opt-title">Mano 10 kg</div>
+                                <div class="opt-price" data-price="0">$0</div>
+                            </div>
+                            <p class="muted">Incluida con la mayoría de tarifas.</p>
+                            <div class="qty" data-key="bag_carry">
+                                <button class="qbtn" data-op="-">−</button>
+                                <span class="qval">0</span>
+                                <button class="qbtn" data-op="+">+</button>
+                            </div>
+                        </div>
+
+                        <div class="opt">
+                            <div class="opt-head">
+                                <div class="opt-title">Bodega 23 kg</div>
+                                <div class="opt-price" data-price="60000">$60.000</div>
+                            </div>
+                            <p class="muted">Una maleta facturada de hasta 23 kg.</p>
+                            <div class="qty" data-key="bag_23">
+                                <button class="qbtn" data-op="-">−</button>
+                                <span class="qval">0</span>
+                                <button class="qbtn" data-op="+">+</button>
+                            </div>
+                        </div>
+
+                        <div class="opt">
+                            <div class="opt-head">
+                                <div class="opt-title">Bodega 32 kg</div>
+                                <div class="opt-price" data-price="90000">$90.000</div>
+                            </div>
+                            <p class="muted">Maleta pesada o sobredimensionada.</p>
+                            <div class="qty" data-key="bag_32">
+                                <button class="qbtn" data-op="-">−</button>
+                                <span class="qval">0</span>
+                                <button class="qbtn" data-op="+">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prioridad -->
+                <div class="card">
+                    <h2 class="h2">Prioridad</h2>
+                    <div class="grid3">
+                        <label class="chk">
+                            <input type="checkbox" id="prio-boarding" data-price="25000" />
+                            Embarque prioritario <span class="muted">(+ $25.000 por pax)</span>
+                        </label>
+                        <label class="chk">
+                            <input type="checkbox" id="prio-fast" data-price="35000" />
+                            Fast track seguridad <span class="muted">(+ $35.000 por pax)</span>
+                        </label>
+                        <label class="chk">
+                            <input type="checkbox" id="prio-seat" data-price="0" disabled />
+                            Asiento ya seleccionado <span class="muted">(incluido)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Seguros -->
+                <div class="card">
+                    <h2 class="h2">Seguros de viaje</h2>
+                    <div class="grid3">
+                        <label class="radio">
+                            <input type="radio" name="seguro" value="ninguno" data-price="0" checked />
+                            Sin seguro
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="seguro" value="basico" data-price="12000" />
+                            Básico (demoras, equipaje) <span class="muted">(+ $12.000 por pax)</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="seguro" value="full" data-price="25000" />
+                            Full (médico + equipaje) <span class="muted">(+ $25.000 por pax)</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DERECHA: resumen -->
+            <aside class="card summary">
+                <h2 class="h2">Resumen de extras</h2>
+                <div id="box-vuelo" class="box"></div>
+
+                <div class="box">
+                    <div class="row"><span>Pasajeros (ADT+CHD)</span><strong id="sum-pax">—</strong></div>
+                    <div class="row"><span>Equipaje</span><strong id="sum-bags">$0</strong></div>
+                    <div class="row"><span>Prioridad</span><strong id="sum-prio">$0</strong></div>
+                    <div class="row"><span>Seguros</span><strong id="sum-seg">$0</strong></div>
+                    <div class="row total"><span>Total extras</span><strong id="sum-total">$0</strong></div>
+                </div>
+
+                <button id="continuar" class="btn primary big">Continuar a pago</button>
+                <p class="mini">Los extras aplican por trayecto seleccionado.</p>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Inicio</span></button>
+        <button>✈️<span>Tus vuelos</span></button>
+        <button>🎁<span>Ofertas</span></button>
+        <button>🛄<span>Check-In</span></button>
+        <button>👤<span>Tu perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
