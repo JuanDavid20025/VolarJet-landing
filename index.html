@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Usuarios</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR (solo logo) -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+            <a href="../mis_reservas/index.html">Mis reservas</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="../perfil/index.html">Perfil</a>
+        </nav>
+        <div class="nav-cta">
+            <button id="btn-new" class="btn primary">Nuevo usuario</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Usuarios</h1>
+        <p class="sub">Administra agentes, admins y clientes registrados.</p>
+
+        <!-- CONTROLES -->
+        <section class="card controls">
+            <div class="toolbar">
+                <div class="field">
+                    <label>Buscar</label>
+                    <input id="q" type="text" placeholder="Nombre, correo o teléfono..." />
+                </div>
+                <div class="field">
+                    <label>Rol</label>
+                    <select id="f-rol">
+                        <option value="">Todos</option>
+                        <option value="admin">Admin</option>
+                        <option value="agente">Agente</option>
+                        <option value="cliente">Cliente</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Estado</label>
+                    <select id="f-estado">
+                        <option value="">Todos</option>
+                        <option value="ACTIVO">Activo</option>
+                        <option value="INACTIVO">Inactivo</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Ordenar por</label>
+                    <select id="f-sort">
+                        <option value="nombre-asc">Nombre (A–Z)</option>
+                        <option value="nombre-desc">Nombre (Z–A)</option>
+                        <option value="fecha-desc">Más recientes</option>
+                        <option value="fecha-asc">Más antiguos</option>
+                        <option value="rol-asc">Rol (A–Z)</option>
+                    </select>
+                </div>
+                <div class="actions">
+                    <button id="btn-limpiar" class="btn ghost">Limpiar</button>
+                    <button id="btn-export" class="btn ghost">Exportar JSON</button>
+                    <label class="btn ghost filelabel">
+                        Importar JSON
+                        <input id="file-import" type="file" accept="application/json" hidden />
+                    </label>
+                    <button id="btn-seed" class="btn">Cargar demo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LISTA -->
+        <section id="list" class="results"></section>
+        <p id="empty" class="hint">No hay usuarios.</p>
+
+        <!-- PAGINACIÓN -->
+        <div class="pagi">
+            <button id="pg-prev" class="btn ghost small">‹ Anterior</button>
+            <span id="pg-info" class="mini"></span>
+            <button id="pg-next" class="btn ghost small">Siguiente ›</button>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='../mis_reservas/index.html'">📄<span>Reservas</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <!-- MODAL FORM -->
+    <dialog id="dlg" class="modal">
+        <form method="dialog" class="modal-card" id="form-user">
+            <h3 class="h3" id="dlg-title">Nuevo usuario</h3>
+            <div class="grid">
+                <div class="field">
+                    <label>Nombre completo</label>
+                    <input id="u-nombre" type="text" required />
+                </div>
+                <div class="field">
+                    <label>Correo</label>
+                    <input id="u-correo" type="email" required />
+                </div>
+                <div class="field">
+                    <label>Teléfono</label>
+                    <input id="u-tel" type="tel" />
+                </div>
+                <div class="field">
+                    <label>Documento</label>
+                    <input id="u-doc" type="text" placeholder="CC 1234567890" />
+                </div>
+                <div class="field">
+                    <label>Rol</label>
+                    <select id="u-rol" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="agente">Agente</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Estado</label>
+                    <select id="u-estado" required>
+                        <option value="ACTIVO">Activo</option>
+                        <option value="INACTIVO">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row end">
+                <button value="cancel" class="btn ghost">Cancelar</button>
+                <button id="btn-save" value="default" class="btn primary">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
