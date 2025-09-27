@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Mi cuenta</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../checkin_web/index.html">Check-in</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="../estado_vuelo/index.html">Estado</a>
+            <a href="../ofertas/index.html">Ofertas</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="logout()">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Mi cuenta</h1>
+        <p class="sub">Administra tu perfil, documentos, métodos de pago y viajeros frecuentes.</p>
+
+        <!-- Datos de usuario -->
+        <section class="card">
+            <h2 class="h2">Datos personales</h2>
+            <div class="grid">
+                <div class="field">
+                    <label>Nombre completo</label>
+                    <input id="nombre" type="text" />
+                </div>
+                <div class="field">
+                    <label>Correo</label>
+                    <input id="correo" type="email" />
+                </div>
+                <div class="field">
+                    <label>Teléfono</label>
+                    <input id="tel" type="tel" />
+                </div>
+            </div>
+            <div class="row">
+                <button id="btn-guardar" class="btn primary">Guardar</button>
+                <span id="msg" class="mini"></span>
+            </div>
+        </section>
+
+        <!-- Documentos -->
+        <section class="card">
+            <h2 class="h2">Documentos de viaje</h2>
+            <ul id="docs" class="list"></ul>
+            <div class="row">
+                <input id="new-doc" type="text" placeholder="Pasaporte #123456" />
+                <button id="btn-doc" class="btn ghost">Agregar</button>
+            </div>
+        </section>
+
+        <!-- Medios de pago -->
+        <section class="card">
+            <h2 class="h2">Medios de pago</h2>
+            <ul id="cards" class="list"></ul>
+            <div class="row">
+                <input id="new-card" type="text" placeholder="**** **** **** 1234" />
+                <button id="btn-card" class="btn ghost">Agregar</button>
+            </div>
+        </section>
+
+        <!-- Viajeros frecuentes -->
+        <section class="card">
+            <h2 class="h2">Viajeros frecuentes</h2>
+            <ul id="pax" class="list"></ul>
+            <div class="row">
+                <input id="new-pax" type="text" placeholder="Nombre pasajero" />
+                <button id="btn-pax" class="btn ghost">Agregar</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Inicio</span></button>
+        <button onclick="location.href='../gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='../estado_vuelo/index.html'">🛫<span>Estado</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button>👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
