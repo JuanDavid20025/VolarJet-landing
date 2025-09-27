@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Cancelar reserva</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../pagina_principal/index.html">Inicio</a>
+            <a href="../mis_reservas/index.html">Mis reservas</a>
+            <a href="../servicios/index.html">Servicios</a>
+            <a href="../contacto/index.html">Contacto</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Cancelar reserva</h1>
+        <p class="sub">Ingresa tu código <strong>PNR</strong> para revisar opciones y posibles devoluciones.</p>
+
+        <!-- Buscar -->
+        <section class="card">
+            <div class="grid">
+                <div class="field">
+                    <label>PNR</label>
+                    <input id="q-pnr" type="text" placeholder="ABC123" />
+                </div>
+                <div class="field">
+                    <label>Correo (opcional, para validar)</label>
+                    <input id="q-mail" type="email" placeholder="tucorreo@ejemplo.com" />
+                </div>
+            </div>
+            <div class="row">
+                <button id="btn-buscar" class="btn primary">Buscar</button>
+                <div id="msg" class="mini"></div>
+            </div>
+        </section>
+
+        <!-- Detalle de reserva -->
+        <section id="detalle" class="card hidden">
+            <div class="head">
+                <div class="title">
+                    <strong>PNR <span class="badge" id="d-pnr">—</span></strong>
+                    <span class="mini" id="d-estado">Estado —</span>
+                </div>
+                <div class="mini" id="d-meta">Creada — · Actualizada —</div>
+            </div>
+
+            <div class="grid info">
+                <div class="kv">
+                    <div class="k">Ruta</div>
+                    <div class="v" id="d-ruta">—</div>
+                </div>
+                <div class="kv">
+                    <div class="k">Fecha</div>
+                    <div class="v" id="d-fecha">—</div>
+                </div>
+                <div class="kv">
+                    <div class="k">Horario</div>
+                    <div class="v" id="d-hora">—</div>
+                </div>
+                <div class="kv">
+                    <div class="k">Cabina</div>
+                    <div class="v" id="d-cabina">—</div>
+                </div>
+                <div class="kv">
+                    <div class="k">Total pagado</div>
+                    <div class="v" id="d-total">$0</div>
+                </div>
+                <div class="kv">
+                    <div class="k">Sale en</div>
+                    <div class="v" id="d-count">—</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Política / cálculo -->
+        <section id="policy" class="card hidden">
+            <h2 class="h2">Política de cancelación (demo)</h2>
+            <div class="bands">
+                <div class="band"><span class="b">≥ 48 h</span> Reembolso del 90% – penalidad $20.000</div>
+                <div class="band"><span class="b">24 a 47 h</span> Reembolso del 75% – penalidad $30.000</div>
+                <div class="band"><span class="b">3 a 23 h</span> Reembolso del 50% – penalidad $40.000</div>
+                <div class="band"><span class="b">&lt; 3 h</span> No reembolsable</div>
+            </div>
+
+            <div class="grid form">
+                <div class="field">
+                    <label>Motivo de cancelación</label>
+                    <select id="motivo">
+                        <option value="">Selecciona…</option>
+                        <option>Cambio de planes</option>
+                        <option>Problemas de salud</option>
+                        <option>Error en la compra</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Destino del reembolso</label>
+                    <div class="row wrap">
+                        <label class="radio"><input type="radio" name="dest" value="ORIGINAL" checked /> Método
+                            original</label>
+                        <label class="radio"><input type="radio" name="dest" value="CREDITO" /> Crédito VolarJet (+10%
+                            bono, tope $50.000)</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="chk">
+                        <input id="acepto" type="checkbox" />
+                        <span>Entiendo que la cancelación es definitiva y acepta las condiciones.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="quote">
+                <div>
+                    <div class="mini">Base pagada</div>
+                    <div class="q" id="q-base">$0</div>
+                </div>
+                <div>
+                    <div class="mini">Penalidad</div>
+                    <div class="q" id="q-pen">$0</div>
+                </div>
+                <div>
+                    <div class="mini">% Reembolso</div>
+                    <div class="q" id="q-rate">0%</div>
+                </div>
+                <div>
+                    <div class="mini">A devolver</div>
+                    <div class="q total" id="q-ref">$0</div>
+                </div>
+            </div>
+
+            <div class="row end">
+                <button id="btn-cancelar" class="btn primary big">Confirmar cancelación</button>
+            </div>
+            <div id="save-msg" class="mini"></div>
+        </section>
+
+        <!-- Éxito -->
+        <section id="ok" class="card success hidden">
+            <h2 class="h2">Reserva cancelada</h2>
+            <p>PNR <span class="badge" id="ok-pnr">—</span> · Reembolso <span class="badge" id="ok-id">RFND-00000</span>
+            </p>
+            <div class="grid info">
+                <div class="kv">
+                    <div class="k">Monto devuelto</div>
+                    <div class="v" id="ok-amt">$0</div>
+                </div>
+                <div class="kv">
+                    <div class="k">Método</div>
+                    <div class="v" id="ok-met">—</div>
+                </div>
+                <div class="kv">
+                    <div class="k">Estado</div>
+                    <div class="v" id="ok-st">APROBADO</div>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn ghost" onclick="location.href='../mis_reservas/index.html'">Ver mis reservas</button>
+                <button class="btn primary" onclick="location.href='../contacto/index.html'">¿Necesitas ayuda?</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../mis_reservas/index.html'">📄<span>Reservas</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../servicios/index.html'">🧰<span>Servicios</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
