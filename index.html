@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Servicios</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html">Inicio</a>
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="../gestionar_reservas/index.html">Gestionar</a>
+            <a href="../estado_vuelo/index.html">Estado</a>
+            <a href="../ofertas/index.html">Ofertas</a>
+            <a href="../perfil/index.html">Perfil</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn primary" onclick="location.href='../buscar_reserva/index.html'">Comprar</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Servicios</h1>
+        <p class="sub">Todo lo que necesitas para planear, gestionar y volar con tranquilidad.</p>
+
+        <!-- BUSCADOR / FILTROS -->
+        <section class="card controls">
+            <div class="toolbar">
+                <div class="field">
+                    <label>Buscar servicio</label>
+                    <input id="q" type="text" placeholder="equipaje, check-in, mascotas..." />
+                </div>
+                <div class="chips">
+                    <button class="chip chip-active" data-cat="">Todos</button>
+                    <button class="chip" data-cat="viaje">Viaje</button>
+                    <button class="chip" data-cat="gestion">Gestión</button>
+                    <button class="chip" data-cat="soporte">Soporte</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LISTA DE SERVICIOS -->
+        <section id="cards" class="grid-cards"></section>
+        <p id="hint" class="hint">No encontramos servicios para tu búsqueda.</p>
+
+        <!-- FAQ / AYUDA RÁPIDA -->
+        <section class="card">
+            <h2 class="h2">Preguntas frecuentes</h2>
+            <div class="faq" id="faq"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Reservar</span></button>
+        <button onclick="location.href='../gestionar_reservas/index.html'">✈️<span>Gestionar</span></button>
+        <button onclick="location.href='../estado_vuelo/index.html'">🛫<span>Estado</span></button>
+        <button onclick="location.href='../ofertas/index.html'">🎁<span>Ofertas</span></button>
+        <button onclick="location.href='../perfil/index.html'">👤<span>Perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
