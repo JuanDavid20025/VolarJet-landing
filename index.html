@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Pago y resumen</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+            <span class="brand"></span>
+        </div>
+        <nav class="nav-links">
+            <a href="../buscar_reserva/index.html">Reservar</a>
+            <a href="#">Check-in</a>
+            <a href="#">Gestionar</a>
+            <a href="#">Estado de vuelo</a>
+            <a href="#">Ofertas</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost" onclick="history.back()">Volver</button>
+            <button class="btn primary" id="btn-ayuda">Ayuda</button>
+        </div>
+    </header>
+
+    <main class="container section-top">
+        <h1 class="h1">Pago y resumen</h1>
+        <p id="resumen" class="sub"></p>
+
+        <div class="layout">
+            <!-- Columna izquierda: datos -->
+            <section class="column">
+                <!-- Pasajeros -->
+                <div class="card">
+                    <h2 class="h2">Datos del pasajero principal</h2>
+                    <div class="grid">
+                        <div class="field">
+                            <label>Nombres</label>
+                            <input id="p-nombres" type="text" placeholder="Juan Camilo" />
+                        </div>
+                        <div class="field">
+                            <label>Apellidos</label>
+                            <input id="p-apellidos" type="text" placeholder="Pérez Gómez" />
+                        </div>
+                        <div class="field">
+                            <label>Tipo de documento</label>
+                            <select id="p-tipo">
+                                <option>CC</option>
+                                <option>TI</option>
+                                <option>CE</option>
+                                <option>PAS</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Número de documento</label>
+                            <input id="p-doc" type="text" maxlength="12" placeholder="1234567890" />
+                        </div>
+                        <div class="field">
+                            <label>Fecha de nacimiento</label>
+                            <input id="p-nac" type="date" />
+                        </div>
+                        <div class="field">
+                            <label>Nacionalidad</label>
+                            <input id="p-nacn" type="text" placeholder="Colombia" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="inline">
+                            <input id="chk-ff" type="checkbox" />
+                            Agregar número de viajero frecuente
+                        </label>
+                        <input id="p-ff" class="hidden" type="text" placeholder="VJ-123456" />
+                    </div>
+                </div>
+
+                <!-- Contacto -->
+                <div class="card">
+                    <h2 class="h2">Contacto y recibo</h2>
+                    <div class="grid">
+                        <div class="field">
+                            <label>Correo electrónico</label>
+                            <input id="c-email" type="email" placeholder="tu@email.com" />
+                        </div>
+                        <div class="field">
+                            <label>Teléfono</label>
+                            <input id="c-tel" type="tel" placeholder="+57 300 000 0000" />
+                        </div>
+                    </div>
+                    <label class="inline">
+                        <input id="chk-factura" type="checkbox" />
+                        Requiero factura electrónica
+                    </label>
+                    <input id="c-nit" class="hidden" type="text" placeholder="NIT / Razón social" />
+                </div>
+
+                <!-- Pago -->
+                <div class="card">
+                    <h2 class="h2">Método de pago</h2>
+                    <div class="pay-tabs">
+                        <button class="tab tab-active" data-pay="card">Tarjeta</button>
+                        <button class="tab" data-pay="pse">PSE</button>
+                        <button class="tab" data-pay="wallet">Billetera</button>
+                    </div>
+
+                    <!-- Tarjeta -->
+                    <div id="pay-card" class="pay-pane">
+                        <div class="grid">
+                            <div class="field">
+                                <label>Número de tarjeta</label>
+                                <input id="card-number" inputmode="numeric" maxlength="19"
+                                    placeholder="**** **** **** ****" />
+                            </div>
+                            <div class="field">
+                                <label>Vencimiento</label>
+                                <input id="card-exp" placeholder="MM/AA" />
+                            </div>
+                            <div class="field">
+                                <label>CVV</label>
+                                <input id="card-cvv" inputmode="numeric" maxlength="4" placeholder="***" />
+                            </div>
+                            <div class="field">
+                                <label>Nombre del titular</label>
+                                <input id="card-name" placeholder="Como aparece en la tarjeta" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PSE -->
+                    <div id="pay-pse" class="pay-pane hidden">
+                        <div class="field">
+                            <label>Banco</label>
+                            <select id="pse-bank">
+                                <option>Bancolombia</option>
+                                <option>Davivienda</option>
+                                <option>BBVA</option>
+                                <option>Nequi</option>
+                            </select>
+                        </div>
+                        <p class="mini">Serás redirigido al banco para autorizar el pago.</p>
+                    </div>
+
+                    <!-- Wallet -->
+                    <div id="pay-wallet" class="pay-pane hidden">
+                        <div class="grid">
+                            <label class="inline"><input type="radio" name="w" checked /> Nequi</label>
+                            <label class="inline"><input type="radio" name="w" /> Daviplata</label>
+                            <label class="inline"><input type="radio" name="w" /> Lulo</label>
+                        </div>
+                    </div>
+
+                    <div class="coupon">
+                        <input id="cup-code" type="text" placeholder="Código promocional" />
+                        <button id="btn-cup" class="btn ghost">Aplicar</button>
+                        <span id="cup-msg" class="mini"></span>
+                    </div>
+
+                    <label class="inline tnc">
+                        <input id="chk-tyc" type="checkbox" />
+                        Acepto Términos y Condiciones y la Política de Privacidad.
+                    </label>
+
+                    <button id="btn-pagar" class="btn primary big" disabled>Pagar ahora</button>
+                    <p class="mini">Se realizará un cobro seguro en COP. Recibirás tu itinerario y factura por correo.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Columna derecha: resumen -->
+            <aside class="card summary">
+                <h2 class="h2">Resumen de compra</h2>
+                <div id="box-vuelo" class="box"></div>
+
+                <div class="box">
+                    <div class="row"><span>Tarifa seleccionada</span><strong id="sum-tarifa">—</strong></div>
+                    <div class="row"><span>Pasajeros (ADT+CHD)</span><strong id="sum-pax">—</strong></div>
+                    <div class="row"><span>Subtotal tarifas</span><strong id="sum-subtarifa">$0</strong></div>
+                    <div class="row"><span>Asientos</span><strong id="sum-asientos">$0</strong></div>
+                    <div class="row"><span>Impuestos (19% IVA)</span><strong id="sum-iva">$0</strong></div>
+                    <div class="row total"><span>Total a pagar</span><strong id="sum-total">$0</strong></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <button onclick="location.href='../buscar_reserva/index.html'">🏠<span>Inicio</span></button>
+        <button>✈️<span>Tus vuelos</span></button>
+        <button>🎁<span>Ofertas</span></button>
+        <button>🛄<span>Check-In</span></button>
+        <button>👤<span>Tu perfil</span></button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
