@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VolarJet – Buscar vuelos</title>
+    <!-- CSS dentro de la MISMA carpeta -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <!-- Ruta del logo: sube UN nivel, luego /img/logo.png -->
+            <img src="../img/logo.png" alt="VolarJet" class="logo" />
+            <span class="brand"></span>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Reservar</a>
+            <a href="#">Check-in</a>
+            <a href="#">Gestionar</a>
+            <a href="#">Estado de vuelo</a>
+            <a href="#">Ofertas</a>
+        </nav>
+        <div class="nav-cta">
+            <button class="btn ghost">Iniciar sesión</button>
+            <button class="btn primary">Reservar ahora</button>
+        </div>
+    </header>
+
+    <!-- HERO + BUSCADOR -->
+    <section class="container section-top">
+        <h1 class="h1">Encuentra tu próximo vuelo</h1>
+        <p class="sub">Compra y gestiona tus reservas 24/7 con la experiencia VolarJet.</p>
+
+        <div class="card search">
+            <div class="row">
+                <button id="btn-rt" class="chip chip-active">Ida y vuelta</button>
+                <button id="btn-ow" class="chip">Solo ida</button>
+            </div>
+
+            <div class="grid">
+                <div class="field">
+                    <label>Origen</label>
+                    <select id="origen"></select>
+                </div>
+
+                <div class="field">
+                    <label>Destino</label>
+                    <div class="destino-wrap">
+                        <select id="destino"></select>
+                        <button id="swap" class="swap" title="Intercambiar">⇄</button>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Salida</label>
+                    <input id="salida" type="date" />
+                </div>
+
+                <div class="field">
+                    <label>Regreso</label>
+                    <input id="regreso" type="date" />
+                </div>
+
+                <div class="field">
+                    <label>Pasajeros</label>
+                    <div class="pax">
+                        <button class="pax-btn" data-key="adt" data-op="-">−</button>
+                        <span class="pax-label">Adultos</span>
+                        <span id="pax-adt" class="pax-val">1</span>
+                        <button class="pax-btn" data-key="adt" data-op="+">+</button>
+
+                        <button class="pax-btn" data-key="chd" data-op="-">−</button>
+                        <span class="pax-label">Niños</span>
+                        <span id="pax-chd" class="pax-val">0</span>
+                        <button class="pax-btn" data-key="chd" data-op="+">+</button>
+
+                        <button class="pax-btn" data-key="inf" data-op="-">−</button>
+                        <span class="pax-label">Inf.</span>
+                        <span id="pax-inf" class="pax-val">0</span>
+                        <button class="pax-btn" data-key="inf" data-op="+">+</button>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Cabina</label>
+                    <select id="cabina">
+                        <option>Economy</option>
+                        <option>Plus</option>
+                        <option>Premium</option>
+                    </select>
+                </div>
+
+                <div class="field field-wide">
+                    <div class="filters">
+                        <label class="inline">
+                            <input id="directos" type="checkbox" checked />
+                            Solo directos
+                        </label>
+
+                        <label class="inline">
+                            Máx. precio
+                            <input id="max-precio" type="number" min="0" placeholder="$" />
+                        </label>
+
+                        <label class="inline">
+                            Código
+                            <input id="promo" type="text" placeholder="PROMO..." />
+                        </label>
+                    </div>
+
+                    <button id="buscar" class="btn primary right">🔎 Buscar vuelos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTADOS -->
+    <section class="container section-bottom">
+        <div id="resumen" class="resumen"></div>
+        <div id="resultados" class="results"></div>
+        <p id="hint" class="hint">Usa el buscador para ver vuelos disponibles.</p>
+    </section>
+
+    <!-- BOTTOM NAV -->
+    <footer class="bottom-nav">
+        <button>🏠<span>Inicio</span></button>
+        <button>✈️<span>Tus vuelos</span></button>
+        <button>🎁<span>Ofertas</span></button>
+        <button>🛄<span>Check-In</span></button>
+        <button>👤<span>Tu perfil</span></button>
+    </footer>
+
+    <!-- JS dentro de la MISMA carpeta -->
+    <script src="app.js"></script>
+</body>
+
+</html>
